@@ -1,8 +1,8 @@
+import "./index.css";
 import { Home } from "pages";
 function App() {
   return (
     <div className="App">
-      Hello there!
       <Home />
     </div>
   );
