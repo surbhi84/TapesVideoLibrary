@@ -3,9 +3,15 @@ import { useState } from "react";
 export function Home() {
   const [isMenu, setIsMenu] = useState(false);
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onScroll={() => {
+        console.log("scrolling");
+        setIsMenu(false);
+      }}
+    >
       <Navbar setIsMenu={setIsMenu} />
-      {isMenu && <SliderMenu />}
+      <SliderMenu isMenu={isMenu} />
       <VideoCard />
     </div>
   );

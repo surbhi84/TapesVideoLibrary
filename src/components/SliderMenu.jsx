@@ -1,4 +1,4 @@
-export function SliderMenu() {
+export function SliderMenu({ isMenu }) {
   const menuTabs = [
     {
       label: "Home",
@@ -45,16 +45,25 @@ export function SliderMenu() {
   ];
   return (
     <>
-      <div className="w-80 flex-col flex-wrap bg-white absolute delay-300">
+      <div
+        className={`w-72 flex-col flex-wrap bg-white left-0 fixed min-h ease-in-out duration-300 ${
+          isMenu ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         {menuTabs.map(({ label, link, icon, alt }) => {
           return (
             <>
               <div key="label">
-                <span className="flex flex-row px-10 py-3 font-semibold text-xl gap-10 items-center hover:bg-gray-100 ">
+                <span className="flex flex-row px-10 py-3 font-medium text-xl gap-10 items-center hover:bg-gray-100 ">
                   <img src={icon} alt={alt} className="scale-110" />
                   <p> {label} </p>
                 </span>
               </div>
+              {label === "History" || label === "Liked Videos" ? (
+                <hr className="m-4 color-slate-300" />
+              ) : (
+                ""
+              )}
             </>
           );
         })}
