@@ -23,14 +23,23 @@ export function FullScreen() {
                   The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG
                   sub]
                 </p>
-                <p className="font-semibold  text-xl">
-                  [Anime] Atashin'chi Official Channel
-                </p>
-                <span className="flex flex-row flex-wrap items-center text-slate-600 ">
-                  1,252,816 views
-                  <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
-                  Sep 9, 2020
-                </span>
+                <div className="flex flex-row gap-4 mt-4">
+                  <img
+                    src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
+                    alt=""
+                    className="rounded-full h-12"
+                  />
+                  <div>
+                    <p className="font-semibold  text-xl">
+                      [Anime] Atashin'chi Official Channel
+                    </p>
+                    <span className="flex flex-row flex-wrap items-center text-slate-600 ">
+                      1,252,816 views
+                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
+                      Sep 9, 2020
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-row gap-8 mt-6 ml-auto h-8">

@@ -18,12 +18,16 @@ export function VideoCard() {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
-          <p className="font-bold">
+          <p className="font-bold mt-2">
             The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG sub]
           </p>
 
-          <div>
-            <img src="./" alt="" />
+          <div className="flex flex-row gap-3 mt-2">
+            <img
+              src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
+              alt=""
+              className="rounded-full h-10"
+            />
             <div className="text-slate-600">
               <p>[Anime] Atashin'chi Official Channel</p>
               <span className="flex flex-row flex-wrap items-center">
