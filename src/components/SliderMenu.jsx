@@ -1,5 +1,5 @@
 import { useMenu } from "hooks";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function SliderMenu() {
   const { isMenu } = useMenu();
@@ -50,7 +50,7 @@ export function SliderMenu() {
   return (
     <>
       <div
-        className={`min-w-max w-72 flex-col flex-wrap bg-white left-0 min-h ease-in-out duration-300 ${
+        className={`min-w-max w-72 flex-col flex-wrap bg-white min-h ease-in-out duration-300${
           isMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >

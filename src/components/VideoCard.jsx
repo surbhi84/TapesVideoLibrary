@@ -1,26 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import { useVideos } from "hooks";
 export function VideoCard() {
   const navigate = useNavigate();
+  const { videoList } = useVideos();
+  console.log(videoList);
   return (
     <div className="flex flex-row flex-wrap p-8">
-      {[...Array(8)].map(() => (
+      {videoList.map(({ id, title, creator, views, uploadedOn, about }) => (
         <div
           className="h-96 w-1/4 p-3"
           key={uuid()}
           onClick={() => {
-            navigate("/video");
+            navigate(`/video/${id}`, {
+              state: {
+                id,
+                title,
+                creator,
+                views,
+                uploadedOn,
+                about,
+              },
+            });
           }}
         >
           <iframe
             className="h-52 w-full "
-            src="https://www.youtube.com/embed/lh4pj4meWO0"
+            src={`https://www.youtube.com/embed/${id}`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
-          <p className="font-bold mt-2">
-            The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG sub]
-          </p>
+          <p className="font-bold mt-2">{title}</p>
 
           <div className="flex flex-row gap-3 mt-2">
             <img
@@ -29,11 +39,11 @@ export function VideoCard() {
               className="rounded-full h-10"
             />
             <div className="text-slate-600">
-              <p>[Anime] Atashin'chi Official Channel</p>
+              <p>{creator}</p>
               <span className="flex flex-row flex-wrap items-center">
-                1,252,816 views
+                {views}
                 <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
-                Sep 9, 2020
+                {uploadedOn}
               </span>
             </div>
           </div>
