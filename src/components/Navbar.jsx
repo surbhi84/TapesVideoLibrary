@@ -5,8 +5,8 @@ export function Navbar() {
   const { setIsMenu } = useMenu();
   return (
     <>
-      {/* MAIN HEADER DIV gradient= bg-gradient-to-r from-white to-rose-300 */}
-      <div className="flex flex-row px-10 py-6 items-center">
+      {/* MAIN HEADER DIV */}
+      <div className="flex flex-row px-10 py-6 items-center  ">
         <img
           src="/assets/icons/menu.svg"
           alt="menu"
