@@ -1,12 +1,13 @@
-import { VideoCard, SliderMenu } from "components";
 import { useMenu } from "hooks";
+import { SliderMenu } from "components";
+import { Outlet } from "react-router-dom";
 
-export function Home() {
+export function NestedRoutes() {
   const { isMenu } = useMenu();
   return (
     <div className="flex flex-row">
       {isMenu && <SliderMenu />}
-      <VideoCard />
+      <Outlet />
     </div>
   );
 }

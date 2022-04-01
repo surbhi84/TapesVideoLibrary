@@ -1,15 +1,14 @@
+import { v4 as uuid } from "uuid";
 export function VideoCard() {
   return (
     <div className="flex flex-row flex-wrap p-8">
       {[...Array(8)].map(() => (
-        <div className="h-96 w-1/4 p-3">
+        <div className="h-96 w-1/4 p-3" key={uuid()}>
           <iframe
             className="h-52 w-full "
             src="https://www.youtube.com/embed/lh4pj4meWO0"
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
           ></iframe>
           <p className="font-bold">
             The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG sub]
