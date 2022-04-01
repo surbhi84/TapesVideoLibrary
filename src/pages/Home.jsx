@@ -1,12 +1,5 @@
-import { VideoCard, SliderMenu } from "components";
-import { useMenu } from "hooks";
+import { VideoCard } from "components";
 
 export function Home() {
-  const { isMenu } = useMenu();
-  return (
-    <div className="flex flex-row">
-      {isMenu && <SliderMenu />}
-      <VideoCard />
-    </div>
-  );
+  return <VideoCard />;
 }

@@ -15,13 +15,13 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/" element={<NestedRoutes />}>
+          <Route path="/" element={<Home />} />
           <Route path="/trending" element={<Trending />} />
           <Route path="/history" element={<History />} />
           <Route path="/myplaylist" element={<MyPlaylist />} />
           <Route path="/watchlater" element={<WatchLater />} />
-          <Route path="/likedvides" element={<LikedVids />} />
+          <Route path="/likedvideos" element={<LikedVids />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
