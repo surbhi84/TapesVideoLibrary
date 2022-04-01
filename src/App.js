@@ -8,6 +8,7 @@ import {
   WatchLater,
   LikedVids,
   Settings,
+  FullScreen,
 } from "pages";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
           <Route path="/myplaylist" element={<MyPlaylist />} />
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/likedvideos" element={<LikedVids />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/video" element={<FullScreen />} />
         </Route>
       </Routes>
     </div>
