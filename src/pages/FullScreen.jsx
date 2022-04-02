@@ -46,20 +46,20 @@ export function FullScreen() {
               </div>
 
               {/* INTERACTIVE BUTTONS */}
-              <div className="flex flex-row gap-8 mt-6 ml-auto h-8">
+              <div className="flex flex-row gap-8 mt-6 ml-auto h-8 ">
                 <IconContext.Provider
-                  value={{ className: "text-2xl self-center" }}
+                  value={{ className: "text-2xl self-center " }}
                 >
-                  <button className="flex flex-row text-xl gap-1 ">
+                  <button className="flex flex-row text-xl gap-1 hover:scale-110 ">
                     <BiLike /> Like
                   </button>
-                  <button className="flex flex-row text-xl gap-1 ">
+                  <button className="flex flex-row text-xl gap-1 hover:scale-110">
                     <BiDislike /> Dislike
                   </button>
-                  <button className="flex flex-row text-xl gap-1 ">
+                  <button className="flex flex-row text-xl gap-1 hover:scale-110">
                     <MdOutlineWatchLater /> Watch Later
                   </button>
-                  <button className="flex flex-row text-xl gap-1 ">
+                  <button className="flex flex-row text-xl gap-1 hover:scale-110">
                     <RiPlayListAddLine />
                     Save
                   </button>

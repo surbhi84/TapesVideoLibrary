@@ -14,9 +14,9 @@ export function Trending() {
 
       <div className="flex flex-row">
         {trendingVids.map(
-          ({ id, title, creator, views, uploadedOn, about }) => (
+          ({ id, title, creator, views, uploadedOn, about, img, avatar }) => (
             <div
-              className="h-2/4 w-2/4 p-3"
+              className="h-2/4 w-2/5 p-3"
               key={uuid()}
               onClick={() => {
                 navigate(`/video/${id}`, {
@@ -31,21 +31,16 @@ export function Trending() {
                 });
               }}
             >
-              {/* VIDEO PLAYER */}
-              <iframe
-                className="h-52 w-full "
-                src={`https://www.youtube.com/embed/${id}`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              ></iframe>
+              {/* VIDEO */}
+              <img className="h-52 w-full " src={img}></img>
 
               {/* VIDEO DETAILS*/}
               <p className="font-bold mt-2">{title}</p>
 
               <div className="flex flex-row gap-3 mt-2">
                 <img
-                  src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
-                  alt=""
+                  src={avatar}
+                  alt="creator avatar"
                   className="rounded-full h-10"
                 />
 
