@@ -67,6 +67,9 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
     views: "1,252,816 views",
     uploadedOn: "Sep 9, 2020",
   },
+
+  // the code below is intentionally left
+
   //   {
   //     id: "",
   //     title: " | Atashin'chi | [ENG sub]",
@@ -77,53 +80,3 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
   //     uploadedOn: "",
   // },
 ];
-
-// <iframe
-//   width="560"
-//   height="315"
-//   src="https://www.youtube.com/embed/OwxU-qdyCUM"
-//   title="YouTube video player"
-//   frameborder="0"
-//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//   allowfullscreen
-// ></iframe>;
-// Mother and the Community Clipboard EP 563 | Atashin'chi | [ENG sub]
-// 69,574 views
-
-{
-  /* <iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/ei58kQKbwOY"
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-></iframe>; */
-}
-// Various Types of Jinxes EP 273 | Atashin'chi | [ENG sub]
-// 1,111,350 views Mar 29, 2021
-
-// <iframe
-//   width="560"
-//   height="315"
-//   src="https://www.youtube.com/embed/Uw6ONSGyWZ4"
-//   title="YouTube video player"
-//   frameborder="0"
-//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//   allowfullscreen
-// ></iframe>;
-// Yuzuhiko's Cat Hands EP 280 | Atashin'chi | [ENG sub]
-// 1,160,331 views Apr 5, 2021
-
-// <iframe
-//   width="560"
-//   height="315"
-//   src="https://www.youtube.com/embed/LjVSX9fapVs"
-//   title="YouTube video player"
-//   frameborder="0"
-//   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-//   allowfullscreen
-// ></iframe>;
-// A Cat's Gift EP 561 | Atashin'chi | [ENG sub]
-// 189,672 views  Mar 30, 2022

@@ -1,14 +1,32 @@
-import { useMenu } from "hooks";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GoPerson } from "react-icons/go";
 import { MdVpnKey } from "react-icons/md";
-import { useState } from "react";
-export function Login() {
-  const { triggerLogin, setTriggerSignup, setTriggerLogin } = useMenu();
+import { HiEyeOff, HiEye } from "react-icons/hi";
+import { authLogin } from "apiCalls";
+import { LOGIN, useMenu, useUser } from "hooks";
 
+export function Login() {
+  const { triggerLogin, setTriggerSignup, setTriggerLogin, setSuccessToast } =
+    useMenu();
+  const { user, userDispatch } = useUser();
+
+  const navigate = useNavigate();
   const [email, setEmail] = useState("adarshbalika@gmail.com");
   const [password, setPassword] = useState("adarshBalika123");
+  const [showPwd, setShowPwd] = useState(false);
 
-  function loginHandler() {}
+  async function loginHandler() {
+    try {
+      const response = await authLogin(email, password);
+      userDispatch({ type: LOGIN, payload: response.data });
+      navigate("/");
+      setTriggerLogin(false);
+      setSuccessToast({ show: true, msg: "You are Logged in!" });
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -35,25 +53,35 @@ export function Login() {
               <div className="rounded-md h-10 border-black border-2 flex flex-row items-center gap-4 p-2">
                 <MdVpnKey />
                 <input
-                  type="password"
+                  type={showPwd ? "text" : "password"}
                   className=" outline-none bg-white"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
                 />
+                <div
+                  className="ml-auto"
+                  onClick={() => {
+                    setShowPwd((p) => !p);
+                  }}
+                >
+                  {showPwd ? <HiEye /> : <HiEyeOff />}
+                </div>
               </div>
             </label>
+
             <div className="flex flex-row justify-between w-3/4 m-2">
               <label>
-                <input type="checkbox" /> Remember me
+                <input type="checkbox" className="accent-red-200" /> Remember me
               </label>
-
               <p>Forgot password?</p>
             </div>
+
             <button
-              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-10 px-4 w-3/4 mt-6"
+              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-10 px-4 w-3/4 mt-6  disabled:opacity-50 "
               onClick={loginHandler}
+              disabled={password === "" || email === ""}
             >
               Login
             </button>

@@ -1,8 +1,23 @@
-import { useMenu } from "hooks";
-import { Link } from "react-router-dom";
+import { LOGOUT, useMenu, useUser } from "hooks";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Navbar() {
-  const { setIsMenu, setTriggerLogin, setTriggerSignup } = useMenu();
+  const { setIsMenu, setTriggerLogin, setTriggerSignup, setSuccessToast } =
+    useMenu();
+  const { userDispatch, isAuth } = useUser();
+  const navigate = useNavigate();
+
+  async function logoutHandler() {
+    try {
+      // const response = await authLogin(email, password);
+      userDispatch({ type: LOGOUT });
+      navigate("/");
+      // setTriggerLogin(false);
+      setSuccessToast({ show: true, msg: "You are Logged out!" });
+    } catch (err) {
+      console.error(err);
+    }
+  }
   return (
     <>
       {/* MAIN HEADER DIV */}
@@ -38,15 +53,25 @@ export function Navbar() {
             </button>
           </div>
           {/* LOGIN BUTTON*/}
-          <button
-            className="bg-gray-200 hover:bg-gray-100 font-bold text-red-700 rounded h-10 px-4"
-            onClick={() => {
-              setTriggerLogin((p) => !p);
-              setTriggerSignup(false);
-            }}
-          >
-            Login
-          </button>
+
+          {isAuth() ? (
+            <button
+              className="bg-gray-200 hover:bg-gray-100 font-bold text-red-700 rounded h-10 px-4"
+              onClick={logoutHandler}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="bg-gray-200 hover:bg-gray-100 font-bold text-red-700 rounded h-10 px-4"
+              onClick={() => {
+                setTriggerLogin((p) => !p);
+                setTriggerSignup(false);
+              }}
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </>

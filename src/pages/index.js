@@ -5,4 +5,4 @@ export { MyPlaylist } from "./MyPlaylist";
 export { WatchLater } from "./WatchLater";
 export { LikedVids } from "./LikedVids";
 export { Settings } from "./Settings";
-export { FullScreen } from "./FullScreen";
+export { SingleVideo } from "./SIngleVideo";

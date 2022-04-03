@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { Navbar, NestedRoutes, Login, Signup } from "components";
 import Mockman from "mockman-js";
+import { Navbar, NestedRoutes, Login, Signup, SuccessToast } from "components";
 import {
   Home,
   Trending,
@@ -9,7 +9,7 @@ import {
   WatchLater,
   LikedVids,
   Settings,
-  FullScreen,
+  SingleVideo,
 } from "pages";
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
       <Navbar />
       <Login />
       <Signup />
+      {/* SUCCESS_TOAST ONLY APPEARS IF THERE'S A SUCCESS MESSAGE TO SHOW */}
+      <SuccessToast />
       <Link to="/ts">MockMan</Link>
       <Routes>
         <Route path="/" element={<NestedRoutes />}>
@@ -28,7 +30,7 @@ function App() {
           <Route path="/watchlater" element={<WatchLater />} />
           <Route path="/likedvideos" element={<LikedVids />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/video/:id" element={<FullScreen />} />
+          <Route path="/video/:id" element={<SingleVideo />} />
           <Route path="/ts" element={<Mockman />} />
         </Route>
       </Routes>

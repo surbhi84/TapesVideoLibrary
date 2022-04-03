@@ -1,29 +1,20 @@
-import { createContext, useContext, useState } from "react";
-import { useReducer } from "react/cjs/react.production.min";
+import { useUserReducer } from "hooks/reducer/userReducer/reducer";
+import { createContext, useContext } from "react";
 
+// CONTEXT
 const UserContext = createContext();
 
 // CONTEXT COMPONENT
-export function MenuProvider({ children }) {
-  const initialUser = {
-    user: {
-      id: "12cddc03-f582-4b7d-9bc8-396190380624",
-      firstName: "Adarsh",
-      lastName: "Balika",
-      email: "adarshbalika@gmail.com",
-      likes: [],
-      history: [],
-      playlists: [],
-    },
-  };
-  const [user, userDispatch] = useReducer(getUserData, initialUser);
+export function UserProvider({ children }) {
+  const [user, userDispatch] = useUserReducer();
+  const isAuth = () =>
+    user.encodedToken !== "" && user.encodedToken !== undefined;
 
-  function getUserData(state, { type, payload }) {
-    switch (type) {
-    }
-  }
-
-  return <UserContext.Provider value={{}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user, userDispatch, isAuth }}>
+      {children}
+    </UserContext.Provider>
+  );
 }
 
 // CUSTOM HOOK
