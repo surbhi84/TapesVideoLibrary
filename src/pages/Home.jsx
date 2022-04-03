@@ -1,5 +1,5 @@
-import { VideoCard } from "components";
+import { VideoListing } from "components";
 
 export function Home() {
-  return <VideoCard />;
+  return <VideoListing />;
 }

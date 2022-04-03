@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useVideos } from "hooks";
 
-export function VideoCard() {
+export function VideoListing() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
 
@@ -15,15 +15,7 @@ export function VideoCard() {
             key={uuid()}
             onClick={() => {
               navigate(`/video/${id}`, {
-                state: {
-                  id,
-                  title,
-                  creator,
-                  views,
-                  uploadedOn,
-                  about,
-                  avatar,
-                },
+                state: id,
               });
             }}
           >
