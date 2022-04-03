@@ -1,5 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
-import { Navbar, NestedRoutes } from "components";
+import { Navbar, NestedRoutes, Login, Signup } from "components";
 import Mockman from "mockman-js";
 import {
   Home,
@@ -16,6 +16,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Login />
+      <Signup />
       <Link to="/ts">MockMan</Link>
       <Routes>
         <Route path="/" element={<NestedRoutes />}>

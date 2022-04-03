@@ -5,8 +5,19 @@ const MenuBtnContext = createContext();
 // CONTEXT COMPONENT
 export function MenuProvider({ children }) {
   const [isMenu, setIsMenu] = useState(false);
+  const [triggerLogin, setTriggerLogin] = useState(false);
+  const [triggerSignup, setTriggerSignup] = useState(false);
   return (
-    <MenuBtnContext.Provider value={{ isMenu, setIsMenu }}>
+    <MenuBtnContext.Provider
+      value={{
+        isMenu,
+        setIsMenu,
+        triggerLogin,
+        setTriggerLogin,
+        triggerSignup,
+        setTriggerSignup,
+      }}
+    >
       {children}
     </MenuBtnContext.Provider>
   );

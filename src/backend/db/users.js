@@ -17,3 +17,5 @@ export const users = [
     updatedAt: formatDate(),
   },
 ];
+// "email": "adarshbalika@gmail.com",
+// "password": "adarshBalika123"
