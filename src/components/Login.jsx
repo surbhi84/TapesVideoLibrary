@@ -31,8 +31,14 @@ export function Login() {
   return (
     <>
       {triggerLogin ? (
-        <div className="w-full h-screen bg-black/40 absolute flex flex-row items-center justify-center">
-          <div className="bg-white rounded-lg  p-10 flex flex-col items-center  absolute shadow-2xl w-2/3 md:w-2/4 xl:w-2/6">
+        <div
+          className="w-full h-screen bg-black/40 absolute flex flex-row items-center justify-center"
+          onClick={() => setTriggerLogin(false)}
+        >
+          <div
+            className="bg-white rounded-lg  p-10 flex flex-col items-center  absolute shadow-2xl w-2/3 md:w-2/4 xl:w-2/6"
+            onClick={(e) => e.stopPropagation()}
+          >
             <label className="flex flex-col w-3/4 align-center text-xl gap-2 ">
               Email
               <div className="rounded-md h-10 border-black border-2 flex flex-row items-center gap-4 p-2">

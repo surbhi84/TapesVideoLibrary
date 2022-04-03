@@ -32,9 +32,15 @@ export function Signup() {
     <>
       {triggerSignup ? (
         // OUTER DIV
-        <div className="flex flex-row items-center justify-center w-full h-screen bg-black/40 absolute">
+        <div
+          className="flex flex-row items-center justify-center w-full h-screen bg-black/40 absolute"
+          onClick={() => setTriggerSignup(false)}
+        >
           {/* LOGIN POPUP */}
-          <div className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-10 pb-15w-2/3 md:w-2/4 xl:w-2/6">
+          <div
+            className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-10 pb-15w-2/3 md:w-2/4 xl:w-2/6"
+            onClick={(e) => e.stopPropagation()}
+          >
             <label className="flex flex-col align-center gap-2 text-xl w-3/4 ">
               Name
               <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-10 p-2">
