@@ -30,3 +30,9 @@ export function postHistory(video, encodedToken) {
     { headers: { authorization: encodedToken } }
   );
 }
+
+export function deleteHistory(id, encodedToken) {
+  return axios.delete("/api/user/history/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}

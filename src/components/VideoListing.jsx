@@ -8,15 +8,14 @@ export function VideoListing() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
   const { user, userDispatch } = useUser();
-  console.log(user.encodedToken);
 
   async function videoCardOnClickHandler({ video }) {
     try {
+      await postHistory(video, user.encodedToken);
+      userDispatch({ type: ADDHISTORY, payload: video });
       navigate(`/video/${video.id}`, {
         state: video.id,
       });
-      postHistory(video, user.encodedToken);
-      userDispatch({ type: ADDHISTORY, payload: video });
     } catch (err) {
       console.error(err);
     }

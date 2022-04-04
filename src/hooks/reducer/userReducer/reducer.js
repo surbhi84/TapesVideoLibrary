@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import {
   ADDHISTORY,
+  DELHISTORY,
   GETHISTORY,
   LOGIN,
   LOGOUT,
@@ -38,6 +39,10 @@ export const useUserReducer = () => {
           ...state,
           user: { ...state.user, history: [...state.user.history, payload] },
         };
+      }
+      case DELHISTORY: {
+        const newHistory = state.user.history.filter((i) => i.id !== payload);
+        return { ...state, user: { ...state.user, history: newHistory } };
       }
       // case GETHISTORY: {
       //   return { ...state, user: { ...state.user, history : {...state.user.history} } };

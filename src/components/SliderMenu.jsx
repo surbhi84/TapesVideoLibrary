@@ -59,7 +59,7 @@ export function SliderMenu() {
             <NavLink to={link}>
               {({ isActive }) => (
                 <>
-                  <div key="label">
+                  <div key={label}>
                     <span
                       className={`flex flex-row pl-10 pr-12 py-3 font-medium text-xl gap-12 items-center hover:bg-gray-200 ${
                         isActive ? "bg-gray-200" : ""
