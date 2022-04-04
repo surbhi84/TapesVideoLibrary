@@ -16,9 +16,6 @@ export function History() {
     userDispatch,
   } = useUser();
 
-  console.log(encodedToken);
-  // const { videoList } = useVideos();
-
   function removeHistoryHandler(id) {
     const response = deleteHistory(id, encodedToken);
     userDispatch({ type: DELHISTORY, payload: id });
@@ -33,7 +30,6 @@ export function History() {
         {history.map(
           ({ id, title, creator, views, uploadedOn, img, avatar, about }) => (
             // VIDEOCARD
-
             <div
               className=" flex flex-row items-center shadow-lg text-lg hover:bg-gray-100 gap-10 p-3 "
               key={uuid()}
@@ -43,7 +39,6 @@ export function History() {
                 });
               }}
             >
-              {console.log(id)}
               {/* VIDEO THUMBNAIL*/}
               <img src={img} className="h-48 w-64 " loading="lazy" />
 
