@@ -7,15 +7,17 @@ import { ADDHISTORY } from "hooks/reducer/userReducer/types";
 export function VideoListing() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
-  const { user, userDispatch } = useUser();
+  const { isAuth, user, userDispatch } = useUser();
 
   async function videoCardOnClickHandler({ video }) {
     try {
-      await postHistory(video, user.encodedToken);
-      userDispatch({ type: ADDHISTORY, payload: video });
       navigate(`/video/${video.id}`, {
         state: video.id,
       });
+      if (isAuth()) {
+        await postHistory(video, user.encodedToken);
+        userDispatch({ type: ADDHISTORY, payload: video });
+      }
     } catch (err) {
       console.error(err);
     }

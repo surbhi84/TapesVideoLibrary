@@ -1,11 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { useVideos } from "hooks";
+import { useUser, useVideos } from "hooks";
+import { postHistory } from "apiCalls";
+import { ADDHISTORY } from "hooks/reducer/userReducer/types";
 
 export function Trending() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
+  const { isAuth, user, userDispatch } = useUser();
   const trendingVids = videoList.filter((vid) => vid.isTrending);
+
+  async function videoCardOnClickHandler({ video }) {
+    try {
+      navigate(`/video/${video.id}`, {
+        state: video.id,
+      });
+      if (isAuth()) {
+        await postHistory(video, user.encodedToken);
+        userDispatch({ type: ADDHISTORY, payload: video });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="flex flex-col flex-wrap px-8">
@@ -19,14 +36,16 @@ export function Trending() {
               className="h-2/4 w-2/5 p-3"
               key={uuid()}
               onClick={() => {
-                navigate(`/video/${id}`, {
-                  state: {
+                videoCardOnClickHandler({
+                  video: {
                     id,
                     title,
                     creator,
                     views,
                     uploadedOn,
                     about,
+                    img,
+                    avatar,
                   },
                 });
               }}

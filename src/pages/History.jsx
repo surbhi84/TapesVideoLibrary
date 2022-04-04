@@ -25,67 +25,72 @@ export function History() {
   }
 
   return (
-    <div className="flex flex-col gap-10 p-10 ">
-      {history.map(
-        ({ id, title, creator, views, uploadedOn, img, avatar, about }) => (
-          // VIDEOCARD
+    <div className="flex flex-col flex-wrap px-8">
+      <h2 className="text-2xl mt-4">Watch History</h2>
+      <hr className="my-4 color-slate-300" />
 
-          <div
-            className=" flex flex-row items-center shadow-lg text-lg hover:bg-gray-100 gap-10 p-3 "
-            key={uuid()}
-            onClick={() => {
-              navigate(`/video/${id}`, {
-                state: id,
-              });
-            }}
-          >
-            {console.log(id)}
-            {/* VIDEO THUMBNAIL*/}
-            <img src={img} className="h-48 w-64 " loading="lazy" />
+      <div className="flex flex-col  ">
+        {history.map(
+          ({ id, title, creator, views, uploadedOn, img, avatar, about }) => (
+            // VIDEOCARD
 
-            <div>
-              {/* VIDEO DETAILS*/}
+            <div
+              className=" flex flex-row items-center shadow-lg text-lg hover:bg-gray-100 gap-10 p-3 "
+              key={uuid()}
+              onClick={() => {
+                navigate(`/video/${id}`, {
+                  state: id,
+                });
+              }}
+            >
+              {console.log(id)}
+              {/* VIDEO THUMBNAIL*/}
+              <img src={img} className="h-48 w-64 " loading="lazy" />
 
-              <p className="font-bold mt-2">{title}</p>
+              <div>
+                {/* VIDEO DETAILS*/}
 
-              {/* Div containing avatar,grey text,about,button */}
-              <div className="flex flex-col gap-2 mt-2">
-                {/* Div containing grey text and avatar */}
-                <div className="flex flex-row gap-6">
-                  <img
-                    src={avatar}
-                    alt="creator_avatar"
-                    className="rounded-full h-10"
-                  />
+                <p className="font-bold mt-2">{title}</p>
 
-                  {/* GREY TEXT DIV */}
-                  <div className="text-slate-600">
-                    <p>{creator}</p>
-                    <span className="flex flex-row flex-wrap items-center">
-                      {views}
-                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
-                      {uploadedOn}
-                    </span>
+                {/* Div containing avatar,grey text,about,button */}
+                <div className="flex flex-col gap-2 mt-2">
+                  {/* Div containing grey text and avatar */}
+                  <div className="flex flex-row gap-6">
+                    <img
+                      src={avatar}
+                      alt="creator_avatar"
+                      className="rounded-full h-10"
+                    />
+
+                    {/* GREY TEXT DIV */}
+                    <div className="text-slate-600">
+                      <p>{creator}</p>
+                      <span className="flex flex-row flex-wrap items-center">
+                        {views}
+                        <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
+                        {uploadedOn}
+                      </span>
+                    </div>
                   </div>
+
+                  {/* ABOUT OF VIDEO */}
+                  <p className="py-2 text-lg ">{about.slice(0, 200)}...</p>
+
+                  <button
+                    className="px-2 py-1 bg-gray-100 rounded-md hover:text-red-700 hover:bg-white self-end"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeHistoryHandler(id);
+                    }}
+                  >
+                    Remove
+                  </button>
                 </div>
-
-                {/* ABOUT OF VIDEO */}
-                <p className="py-2 text-lg ">{about.slice(0, 200)}...</p>
-
-                <button
-                  className="px-2 py-1 bg-gray-100 rounded-md hover:text-red-700 hover:bg-white self-end"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeHistoryHandler(id);
-                  }}
-                >
-                  Remove
-                </button>
               </div>
             </div>
-          </div>
-        )
-      )}
+          )
+        )}
+      </div>
     </div>
   );
 }
