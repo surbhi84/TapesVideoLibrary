@@ -2,8 +2,10 @@ import { createContext } from "react";
 import { useContext, useEffect, useState } from "react";
 import { getVideos } from "apiCalls";
 
+// CONTEXT
 const VideoContext = createContext();
 
+// CONTEXT COMPONENT
 export function VideoProvider({ children }) {
   const [error, setError] = useState("");
   const [videoList, setVideoList] = useState([]);
@@ -32,4 +34,5 @@ export function VideoProvider({ children }) {
   );
 }
 
+// CUSTOM HOOK
 export const useVideos = () => useContext(VideoContext);

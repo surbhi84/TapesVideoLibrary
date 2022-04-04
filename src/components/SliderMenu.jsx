@@ -50,7 +50,7 @@ export function SliderMenu() {
   return (
     <>
       <div
-        className={`min-w-max w-72 flex-col flex-wrap bg-white min-h ease-in-out duration-300${
+        className={`min-w-max flex-col flex-wrap bg-white min-h ease-in-out duration-300${
           isMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -61,7 +61,7 @@ export function SliderMenu() {
                 <>
                   <div key="label">
                     <span
-                      className={`flex flex-row px-10 py-3 font-medium text-xl gap-10 items-center hover:bg-gray-200 ${
+                      className={`flex flex-row pl-10 pr-12 py-3 font-medium text-xl gap-12 items-center hover:bg-gray-200 ${
                         isActive ? "bg-gray-200" : ""
                       }`}
                     >
