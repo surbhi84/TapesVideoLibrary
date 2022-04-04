@@ -9,7 +9,6 @@ export function Navbar() {
 
   async function logoutHandler() {
     try {
-      const response = await authLogin(email, password);
       userDispatch({ type: LOGOUT });
       navigate("/");
       setTriggerLogin(false);
