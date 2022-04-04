@@ -1,21 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { useVideos } from "hooks";
+import { useVideos, useUser } from "hooks";
+import { postHistory } from "apiCalls";
+import { ADDHISTORY } from "hooks/reducer/userReducer/types";
 
 export function VideoListing() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
+  const { user, userDispatch } = useUser();
+  console.log(user.encodedToken);
+
+  async function videoCardOnClickHandler({ video }) {
+    try {
+      navigate(`/video/${video.id}`, {
+        state: video.id,
+      });
+      postHistory(video, user.encodedToken);
+      userDispatch({ type: ADDHISTORY, payload: video });
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="flex flex-row flex-wrap p-8">
       {videoList.map(
         ({ id, title, creator, views, uploadedOn, about, img, avatar }) => (
+          // VIDEOCARD
           <div
             className="h-96 w-1/4 p-3"
             key={uuid()}
             onClick={() => {
-              navigate(`/video/${id}`, {
-                state: id,
+              videoCardOnClickHandler({
+                video: {
+                  id,
+                  title,
+                  creator,
+                  views,
+                  uploadedOn,
+                  about,
+                  img,
+                  avatar,
+                },
               });
             }}
           >

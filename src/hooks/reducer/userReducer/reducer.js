@@ -1,5 +1,12 @@
 import { useReducer } from "react";
-import { LOGIN, LOGOUT, SIGNUP } from "./types";
+import {
+  ADDHISTORY,
+  GETHISTORY,
+  LOGIN,
+  LOGOUT,
+  SETHISTORY,
+  SIGNUP,
+} from "./types";
 
 // REDUCER CUSTOM HOOK
 export const useUserReducer = () => {
@@ -25,6 +32,18 @@ export const useUserReducer = () => {
       }
       case LOGOUT: {
         return initialUser;
+      }
+      case ADDHISTORY: {
+        return {
+          ...state,
+          user: { ...state.user, history: [...state.user.history, payload] },
+        };
+      }
+      // case GETHISTORY: {
+      //   return { ...state, user: { ...state.user, history : {...state.user.history} } };
+      // }
+      case SETHISTORY: {
+        return payload;
       }
     }
   }

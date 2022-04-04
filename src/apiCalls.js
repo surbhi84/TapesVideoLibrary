@@ -17,3 +17,16 @@ export function authSignup({ name, email, password }) {
     password,
   });
 }
+
+export function getHistory(encodedToken) {
+  return axios.get("/api/user/history", {
+    headers: { authorization: encodedToken },
+  });
+}
+export function postHistory(video, encodedToken) {
+  return axios.post(
+    "/api/user/history",
+    { video },
+    { headers: { authorization: encodedToken } }
+  );
+}
