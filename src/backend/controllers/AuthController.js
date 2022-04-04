@@ -27,9 +27,9 @@ export const signupHandler = function (schema, request) {
         }
       );
     }
-    const _id = uuid();
+    const id = uuid();
     const newUser = {
-      _id,
+      id,
       email,
       password,
       createdAt: formatDate(),
@@ -40,7 +40,7 @@ export const signupHandler = function (schema, request) {
       playlists: [],
     };
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign({ _id, email }, process.env.REACT_APP_JWT_SECRET);
+    const encodedToken = sign({ id, email }, process.env.REACT_APP_JWT_SECRET);
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(
@@ -72,11 +72,11 @@ export const loginHandler = function (schema, request) {
     }
     if (password === foundUser.password) {
       const encodedToken = sign(
-        { _id: foundUser._id, email },
+        { id: foundUser.id, email },
         process.env.REACT_APP_JWT_SECRET
       );
       foundUser.password = undefined;
-      return new Response(200, {}, { foundUser, encodedToken });
+      return new Response(200, {}, { user: foundUser, encodedToken });
     }
     new Response(
       401,
