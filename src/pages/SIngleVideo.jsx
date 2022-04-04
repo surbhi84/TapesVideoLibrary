@@ -61,7 +61,12 @@ export function SingleVideo() {
                     <button className="flex flex-row text-xl gap-1 hover:scale-110">
                       <BiDislike /> Dislike
                     </button>
-                    <button className="flex flex-row text-xl gap-1 hover:scale-110">
+                    <button
+                      className="flex flex-row text-xl gap-1 hover:scale-110"
+                      onClick={() => {
+                        watchLaterHandler(singleVideo.id);
+                      }}
+                    >
                       <MdOutlineWatchLater /> Watch Later
                     </button>
                     <button className="flex flex-row text-xl gap-1 hover:scale-110">
@@ -85,3 +90,5 @@ export function SingleVideo() {
     </>
   );
 }
+
+async function watchLaterHandler(id) {}

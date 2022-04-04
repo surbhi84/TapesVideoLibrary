@@ -9,10 +9,10 @@ export function Navbar() {
 
   async function logoutHandler() {
     try {
-      const response = await authLogin(email, password);
+      // const response = await authLogin(email, password);
       userDispatch({ type: LOGOUT });
       navigate("/");
-      setTriggerLogin(false);
+      // setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged out!" });
     } catch (err) {
       console.error(err);

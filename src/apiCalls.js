@@ -4,7 +4,7 @@ export function getVideos() {
   return axios.get("/api/videos");
 }
 
-// USER RELATED API'S
+// USER AUTH RELATED API CALLS
 
 export function authLogin(email, password) {
   return axios.post("/api/auth/login", { email, password });
@@ -18,11 +18,14 @@ export function authSignup({ name, email, password }) {
   });
 }
 
+// HISTORY RELATED API CALLS
+
 export function getHistory(encodedToken) {
   return axios.get("/api/user/history", {
     headers: { authorization: encodedToken },
   });
 }
+
 export function postHistory(video, encodedToken) {
   return axios.post(
     "/api/user/history",
@@ -36,3 +39,10 @@ export function deleteHistory(id, encodedToken) {
     headers: { authorization: encodedToken },
   });
 }
+
+export function deleteAllHistory() {
+  return axios.delete("/api/user/history/all");
+}
+
+// WATCHLATER RELATED API CALLS
+// export function addWatchLater(id,encodedToken)
