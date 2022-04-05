@@ -1,8 +1,8 @@
 import { useMenu } from "hooks";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export function SliderMenu() {
-  const { isMenu } = useMenu();
+  const { isMenu, setIsMenu } = useMenu();
   const menuTabs = [
     {
       label: "Home",
@@ -49,37 +49,70 @@ export function SliderMenu() {
   ];
   return (
     <>
-      <div
-        className={`min-w-max flex-col flex-wrap bg-white min-h ease-in-out duration-300${
-          isMenu ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        {menuTabs.map(({ label, link, icon, alt }) => {
-          return (
-            <NavLink to={link}>
-              {({ isActive }) => (
-                <>
-                  <div key={label}>
-                    <span
-                      className={`flex flex-row pl-10 pr-12 py-3 font-medium text-xl gap-12 items-center hover:bg-gray-200 ${
-                        isActive ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <img src={icon} alt={alt} className="scale-110" />
-                      <p> {label} </p>
-                    </span>
-                  </div>
-                  {label === "History" || label === "Liked Videos" ? (
-                    <hr className="m-4 color-slate-300" />
-                  ) : (
-                    ""
-                  )}
-                </>
-              )}
-            </NavLink>
-          );
-        })}
-      </div>
+      {isMenu && (
+        <div
+          className="bg-black/40 absolute h-full w-full"
+          onClick={() => {
+            setIsMenu(false);
+          }}
+        >
+          {" "}
+          {isMenu && (
+            <div
+              className={`min-w-max flex-col flex-wrap bg-white h-screen absolute ease-in-out duration-300 ${
+                isMenu ? "translate-x-0 " : "-translate-x-full"
+              }`}
+            >
+              {/* LOGO DIV MIGHT IMPLEMENT IN FUTURE */}
+              {/* <div className="flex flex-row p-6 pl-5">
+          <img
+            src="/assets/icons/menu.svg"
+            alt="menu"
+            className="scale-110 hover:bg-gray-200 rounded-full p-1"
+            onClick={() => {
+              setIsMenu((p) => !p);
+            }}
+          /> */}
+              {/*  LOGO */}
+              {/* <Link to="/">
+            <div className="flex flex-row pl-6 ">
+              <img src="/assets/logo.svg" className="w-8 color-red" />
+              <h1 className="font-bold text-3xl pl-1 text-red-700 font-sans">
+                Tapes
+              </h1>
+            </div>
+          </Link>
+        </div> */}
+
+              {menuTabs.map(({ label, link, icon, alt }) => {
+                return (
+                  <NavLink to={link} key={label}>
+                    {({ isActive }) => (
+                      <>
+                        <div>
+                          <span
+                            className={`flex flex-row pl-6 pr-12 py-3 font-medium text-slate-800 text-md gap-7 items-center hover:bg-gray-200 ${
+                              isActive ? "bg-gray-200" : ""
+                            }`}
+                          >
+                            <img src={icon} alt={alt} />
+                            <p> {label} </p>
+                          </span>
+                        </div>
+                        {label === "History" || label === "Liked Videos" ? (
+                          <hr className="m-4 color-slate-300" />
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    )}
+                  </NavLink>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 }

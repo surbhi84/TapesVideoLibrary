@@ -3,11 +3,11 @@ import { SliderMenu } from "components";
 import { Outlet } from "react-router-dom";
 
 export function NestedRoutes() {
-  const { isMenu } = useMenu();
+  const { isMenu, triggerLogin, triggerSignup } = useMenu();
   return (
     <div className="flex flex-row">
-      {isMenu && <SliderMenu />}
-      <div className={isMenu ? `pr-4 md:pr-28` : `px-4 md:px-28`}>
+      <SliderMenu />
+      <div className="w-4/5 m-auto">
         <Outlet />
       </div>
     </div>
