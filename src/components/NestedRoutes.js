@@ -5,11 +5,11 @@ import { Outlet } from "react-router-dom";
 export function NestedRoutes() {
   const { isMenu, triggerLogin, triggerSignup } = useMenu();
   return (
-    <div className="flex flex-row">
+    <>
       <SliderMenu />
-      <div className="w-4/5 m-auto">
+      <div className="w-11/12 m-auto md:w-10/12">
         <Outlet />
       </div>
-    </div>
+    </>
   );
 }
