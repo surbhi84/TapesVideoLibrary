@@ -46,3 +46,12 @@ export function deleteAllHistory() {
 
 // WATCHLATER RELATED API CALLS
 // export function addWatchLater(id,encodedToken)
+
+// LIKES MANAGING API'S
+export function postLike(video, encodedToken) {
+  return axios.post(
+    "/api/user/likes/",
+    { video },
+    { headers: { authorization: encodedToken } }
+  );
+}

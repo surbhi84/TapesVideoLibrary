@@ -11,6 +11,7 @@ export function MenuProvider({ children }) {
     show: false,
     msg: "",
   });
+
   return (
     <MenuBtnContext.Provider
       value={{

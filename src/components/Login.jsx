@@ -32,16 +32,16 @@ export function Login() {
     <>
       {triggerLogin ? (
         <div
-          className="w-full h-screen bg-black/40 absolute flex flex-row items-center justify-center"
+          className="flex flex-row items-center justify-center bg-black/40 fixed w-full h-screen p-2 inset-0 overflow-hidden"
           onClick={() => setTriggerLogin(false)}
         >
           <div
-            className="bg-white rounded-lg  p-10 flex flex-col items-center  absolute shadow-2xl w-2/3 md:w-2/4 xl:w-2/6"
+            className="flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-6 px-10 z-1 "
             onClick={(e) => e.stopPropagation()}
           >
-            <label className="flex flex-col w-3/4 align-center text-xl gap-2 ">
+            <label className="flex flex-col align-center gap-0.5">
               Email
-              <div className="rounded-md h-10 border-black border-2 flex flex-row items-center gap-4 p-2">
+              <div className="rounded-md border-black border-2 flex flex-row items-center gap-2 h-8 px-1 w-64">
                 <GoPerson />
                 <input
                   type="text"
@@ -54,9 +54,9 @@ export function Login() {
               </div>
             </label>
 
-            <label className="flex flex-col w-3/4 align-center text-xl gap-2 mt-6">
+            <label className="flex flex-col align-center gap-0.5 mt-6">
               Password
-              <div className="rounded-md h-10 border-black border-2 flex flex-row items-center gap-4 p-2">
+              <div className="rounded-md border-black border-2 flex flex-row items-center gap-4 h-8 px-1 ">
                 <MdVpnKey />
                 <input
                   type={showPwd ? "text" : "password"}
@@ -77,22 +77,21 @@ export function Login() {
               </div>
             </label>
 
-            <div className="flex flex-row justify-between w-3/4 m-2">
+            <div className="flex flex-row justify-between w-64 mt-1">
               <label>
                 <input type="checkbox" className="accent-red-200" /> Remember me
               </label>
-              <p>Forgot password?</p>
             </div>
 
             <button
-              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-10 px-4 w-3/4 mt-6  disabled:opacity-50 "
+              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-8 px-4 mt-6 w-64 disabled:opacity-50 "
               onClick={loginHandler}
               disabled={password === "" || email === ""}
             >
               Login
             </button>
             <button
-              className=" font-bold text-red-700 rounded-md h-10 px-4 w-2/4 mt-2 decoration-solid hover:scale-110"
+              className=" font-bold text-red-700 rounded-md h-10 px-4 mt-2 decoration-solid hover:scale-110"
               onClick={() => {
                 setTriggerSignup(true);
                 setTriggerLogin((p) => !p);

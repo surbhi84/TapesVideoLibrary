@@ -3,14 +3,20 @@ import { BiLike, BiDislike } from "react-icons/bi";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
-import { useVideos } from "hooks";
+import { useVideos, useUser } from "hooks";
 
 export function SingleVideo() {
   const { id: videoId } = useParams();
   const { videoList } = useVideos();
+  const {
+    user: { encodedToken },
+  } = useUser();
 
-  videoList;
   const singleVideo = videoList.find((vid) => vid.id === videoId);
+
+  async function likeHandler(video, encodedToken) {
+    const response = await postLikes(video, encodedToken);
+  }
 
   return (
     <>
@@ -38,12 +44,14 @@ export function SingleVideo() {
                       className="rounded-full h-12"
                     />
                     <div>
-                      <p className="font-semibold  text-xl">
+                      <p className="font-semibold text-xl">
                         {singleVideo.creator}
                       </p>
-                      <span className="flex flex-row flex-wrap items-center text-slate-600 ">
+                      <span className="flex flex-row flex-wrap items-center text-slate-600">
                         {singleVideo.views}
-                        <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
+                        <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
+                          {" "}
+                        </span>
                         {singleVideo.uploadedOn}
                       </span>
                     </div>
@@ -53,9 +61,12 @@ export function SingleVideo() {
                 {/* INTERACTIVE BUTTONS */}
                 <div className="flex flex-row gap-8 mt-6 ml-auto h-8 ">
                   <IconContext.Provider
-                    value={{ className: "text-2xl self-center " }}
+                    value={{ className: "text-2xl self-center" }}
                   >
-                    <button className="flex flex-row text-xl gap-1 hover:scale-110 ">
+                    <button
+                      className="flex flex-row text-xl gap-1 hover:scale-110"
+                      onClick={() => likeHandler(singleVideo)}
+                    >
                       <BiLike /> Like
                     </button>
                     <button className="flex flex-row text-xl gap-1 hover:scale-110">
@@ -90,5 +101,3 @@ export function SingleVideo() {
     </>
   );
 }
-
-async function watchLaterHandler(id) {}
