@@ -4,7 +4,7 @@ import { RiPlayListAddLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { useLocation } from "react-router-dom";
 
-export function FullScreen() {
+export function SingleVideo() {
   // EXTRACTING STATE PASSED BY NAVIGATE
   const {
     state: { id, title, creator, views, uploadedOn, about },
