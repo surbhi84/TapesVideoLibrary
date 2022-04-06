@@ -11,7 +11,7 @@ export function SuccessToast() {
     return () => {
       clearTimeout(timer);
     };
-  }, [successToast]);
+  }, []);
 
   return (
     <>
@@ -21,7 +21,7 @@ export function SuccessToast() {
           onClick={() => setSuccessToast(false)}
         >
           <div
-            className="flex flex-row items-center justify-center absolute bg-white shadow-lg text-xl rounded-lg border-2 border-red-700 w-80 h-16"
+            className="flex flex-row items-center justify-center absolute bg-white shadow-lg text-lg text-center rounded-lg border-2 border-red-700 w-80 h-14"
             onClick={(e) => e.stopPropagation()}
           >
             {successToast.msg}

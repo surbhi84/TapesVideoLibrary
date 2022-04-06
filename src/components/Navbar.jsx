@@ -23,13 +23,14 @@ export function Navbar() {
       console.error(err);
     }
   }
+  console.log(8888);
 
-  useEffect(() => {
-    if (triggerLogin) document.body.style.overflow = "hidden";
-    else {
-      document.body.style.overflow = "auto";
-    }
-  }, [triggerLogin]);
+  // useEffect(() => {
+  //   if (triggerLogin) document.body.style.overflow = "hidden";
+  //   else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [triggerLogin]);
 
   return (
     <>

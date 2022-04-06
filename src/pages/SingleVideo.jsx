@@ -1,36 +1,131 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { BiLike, BiDislike } from "react-icons/bi";
-import { MdOutlineWatchLater, MdThumbUp } from "react-icons/md";
+import {
+  MdOutlineWatchLater,
+  MdThumbDown,
+  MdThumbUp,
+  MdWatchLater,
+} from "react-icons/md";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { useVideos, useUser, useMenu } from "hooks";
-import { postLike } from "apiCalls";
+import {
+  postLike,
+  deleteLike,
+  postWatchLater,
+  deleteWatchLater,
+} from "apiCalls";
+import { WatchLater } from "pages";
+import {
+  ADDLIKEDVIDEO,
+  DELLIKEDVIDEO,
+  DELWATCHLATER,
+  ADDWATCHLATER,
+} from "hooks/reducer/userReducer/types";
 
 export function SingleVideo() {
   const { id: videoId } = useParams();
   const { videoList } = useVideos();
   const { setSuccessToast } = useMenu();
   const [like, setLiked] = useState(false);
+  const [dislike, setDislike] = useState(false);
+  const [watchLater, setWatchLater] = useState(false);
   const {
-    user: { encodedToken },
+    user: {
+      user: { likes: likesArray, watchLater: watchLaterArray },
+      encodedToken,
+    },
     isAuth,
+    userDispatch,
   } = useUser();
 
+  useEffect(() => {
+    if (likesArray && likesArray.some((i) => i.id === videoId)) setLiked(true);
+    if (watchLaterArray && watchLaterArray.some((i) => i.id === videoId))
+      setWatchLater(true);
+  }, []);
+
+  console.log(encodedToken);
   const singleVideo = videoList.find((vid) => vid.id === videoId);
 
-  async function likeHandler(video) {
-    await postLike(video, encodedToken);
-    if (isAuth()) setLiked(true);
-    else {
-      setSuccessToast({
-        show: true,
-        msg: "Hey! You have to login for this feature.",
-      });
+  // LIKEhNADELR
+
+  async function likeHandler(video, like) {
+    try {
+      if (isAuth()) {
+        if (like) {
+          setLiked(false);
+          try {
+            await deleteLike(video.id, encodedToken);
+            userDispatch({ type: DELLIKEDVIDEO, payload: video.id });
+          } catch (err) {
+            setLiked(true);
+            console.error(err);
+            setSuccessToast({ show: true, msg: "Something went wrong" });
+          }
+        } else {
+          setLiked(true);
+          try {
+            await postLike(video, encodedToken);
+            userDispatch({ type: ADDLIKEDVIDEO, payload: video });
+          } catch (err) {
+            setLiked(false);
+            console.error(err);
+
+            setSuccessToast({ show: true, msg: "Something went wrong" });
+          }
+        }
+      } else {
+        setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
 
-  console.log(encodedToken);
+  // WATCHLATER HANDLER
+
+  async function watchLaterHandler(video, watchLater) {
+    try {
+      if (isAuth()) {
+        if (watchLater) {
+          setWatchLater(false);
+          try {
+            await deleteWatchLater(video.id, encodedToken);
+            userDispatch({ type: DELWATCHLATER, payload: video.id });
+          } catch (err) {
+            setWatchLater(true);
+            console.error(err);
+            setSuccessToast({ show: true, msg: "Something went wrong" });
+          }
+        } else {
+          setWatchLater(true);
+          try {
+            await postWatchLater(video, encodedToken);
+            userDispatch({ type: ADDWATCHLATER, payload: video });
+          } catch (err) {
+            setWatchLater(false);
+            console.error(err);
+            setSuccessToast({ show: true, msg: "Something went wrong" });
+          }
+        }
+      } else {
+        setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  console.log(1212);
+
   return (
     <>
       {singleVideo ? (
@@ -62,7 +157,9 @@ export function SingleVideo() {
                     </p>
                     <span className="flex flex-row flex-wrap items-center text-slate-600 text-sm">
                       {singleVideo.views}
-                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
+                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
+                        {" "}
+                      </span>
                       {singleVideo.uploadedOn}
                     </span>
                   </div>
@@ -77,16 +174,27 @@ export function SingleVideo() {
                   <button
                     className="flex flex-row text-lg gap-1 hover:scale-110"
                     onClick={() => {
-                      likeHandler(singleVideo);
+                      likeHandler(singleVideo, like);
                     }}
                   >
                     {like ? <MdThumbUp /> : <BiLike />} Like
                   </button>
-                  <button className="flex flex-row text-lg gap-1 hover:scale-110">
-                    <BiDislike /> Dislike
+                  <button
+                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    onClick={() => {
+                      setDislike((p) => !p);
+                    }}
+                  >
+                    {dislike ? <MdThumbDown /> : <BiDislike />}Dislike
                   </button>
-                  <button className="flex flex-row text-lg gap-1 hover:scale-110">
-                    <MdOutlineWatchLater /> Watch Later
+                  <button
+                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    onClick={() => {
+                      watchLaterHandler(singleVideo, watchLater);
+                    }}
+                  >
+                    {watchLater ? <MdWatchLater /> : <MdOutlineWatchLater />}
+                    Watch Later
                   </button>
                   <button className="flex flex-row text-lg gap-1 hover:scale-110">
                     <RiPlayListAddLine />

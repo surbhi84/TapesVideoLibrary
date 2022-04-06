@@ -55,3 +55,26 @@ export function postLike(video, encodedToken) {
     { headers: { authorization: encodedToken } }
   );
 }
+
+export function deleteLike(id, encodedToken) {
+  console.log("/api/user/likes/" + id);
+  return axios.delete("/api/user/likes/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}
+
+// WATCHLATER MANAGING API'S
+export function postWatchLater(video, encodedToken) {
+  return axios.post(
+    "/api/user/watchlater/",
+    { video },
+    { headers: { authorization: encodedToken } }
+  );
+}
+
+export function deleteWatchLater(id, encodedToken) {
+  console.log("/api/user/watchlater/" + id);
+  return axios.delete("/api/user/watchlater/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}

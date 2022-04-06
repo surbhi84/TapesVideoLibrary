@@ -25,17 +25,18 @@ export function Trending() {
   }
 
   return (
-    <div className="flex flex-col flex-wrap">
-      <h2 className="text-lg font-semibold text-gray-700 mt-4">
+    <>
+      <h2 className="text-md font-semibold text-gray-700 mt-4">
         Trending Videos
       </h2>
       <hr className="my-1 color-slate-300" />
 
-      <div className="grid grid-cols-auto-fit justify-center ">
-        {trendingVids.map(
+      <div className="grid grid-cols-auto-fit justify-center">
+        {videoList.map(
           ({ id, title, creator, views, uploadedOn, about, img, avatar }) => (
+            // VIDEOCARD
             <div
-              className="p-2"
+              className="h-72 w-72 p-3 m-1"
               key={uuid()}
               onClick={() => {
                 videoCardOnClickHandler({
@@ -53,31 +54,34 @@ export function Trending() {
               }}
             >
               {/* VIDEO */}
-              <img className="h-48 w-full " src={img}></img>
+              <img src={img} loading="lazy" />
 
-              {/* VIDEO DETAILS*/}
-              <p className="font-semibold mt-2">{title.slice(0, 50)}</p>
-
-              <div className="flex flex-row gap-3 mt-2">
+              <div className="flex flex-row gap-3 mt-3">
                 <img
                   src={avatar}
-                  alt="creator avatar"
+                  alt="creator_avatar"
                   className="rounded-full h-10"
                 />
 
-                <div className="text-slate-600 text-sm">
-                  <p>{creator}</p>
-                  <span className="flex flex-row flex-wrap items-center">
-                    {views}
-                    <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
-                    {uploadedOn}
-                  </span>
+                <div>
+                  {/* VIDEO DETAILS*/}
+                  <p className="font-semibold text-sm mb-0.5">
+                    {title.slice(0, 55)}...
+                  </p>
+                  <div className="font-medium text-gray-600 text-xs mb-0.5">
+                    <p>{creator}</p>
+                    <span className="flex flex-row flex-wrap items-center ">
+                      {views}
+                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full"></span>
+                      {uploadedOn}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           )
         )}
       </div>
-    </div>
+    </>
   );
 }

@@ -59,7 +59,7 @@ export function VideoListing() {
               <div>
                 {/* VIDEO DETAILS*/}
                 <p className="font-semibold text-sm mb-0.5">
-                  {title.slice(0, 50)}
+                  {title.slice(0, 55)}...
                 </p>
                 <div className="font-medium text-gray-600 text-xs mb-0.5">
                   <p>{creator}</p>

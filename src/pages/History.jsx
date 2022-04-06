@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useUser, useVideos } from "hooks";
-
 import { v4 as uuid } from "uuid";
 import { deleteHistory } from "apiCalls";
 import { DELHISTORY } from "hooks/reducer/userReducer/types";
@@ -23,17 +22,17 @@ export function History() {
 
   return (
     <div className="flex flex-col flex-wrap px-8">
-      <h2 className="text-lg font-semibold text-gray-700  mt-4">
+      <h2 className="text-lg font-semibold text-gray-700 mt-4">
         Watch History
       </h2>
       <hr className="my-1 color-slate-300" />
 
-      <div className="flex flex-col  ">
+      <div className="flex flex-col">
         {history.map(
           ({ id, title, creator, views, uploadedOn, img, avatar, about }) => (
             // VIDEOCARD
             <div
-              className=" flex flex-row items-center shadow-lg text-lg hover:bg-gray-100 gap-10 p-3 "
+              className="flex flex-row items-center shadow-lg hover:bg-gray-100 gap-10 p-3 "
               key={uuid()}
               onClick={() => {
                 navigate(`/video/${id}`, {
@@ -42,17 +41,16 @@ export function History() {
               }}
             >
               {/* VIDEO THUMBNAIL*/}
-              <img src={img} className="h-48 w-64 " loading="lazy" />
+              <img src={img} className="h-36 w-48" loading="lazy" />
 
               <div>
                 {/* VIDEO DETAILS*/}
-
-                <p className="font-bold mt-2">{title}</p>
+                <p className="font-bold text-md mt-2">{title}</p>
 
                 {/* Div containing avatar,grey text,about,button */}
-                <div className="flex flex-col gap-2 mt-2">
+                <div className="flex flex-col gap-1 mt-2">
                   {/* Div containing grey text and avatar */}
-                  <div className="flex flex-row gap-6">
+                  <div className="flex flex-row gap-2">
                     <img
                       src={avatar}
                       alt="creator_avatar"
@@ -60,7 +58,7 @@ export function History() {
                     />
 
                     {/* GREY TEXT DIV */}
-                    <div className="text-slate-600">
+                    <div className="text-slate-600 text-sm">
                       <p>{creator}</p>
                       <span className="flex flex-row flex-wrap items-center">
                         {views}
@@ -71,10 +69,10 @@ export function History() {
                   </div>
 
                   {/* ABOUT OF VIDEO */}
-                  <p className="py-2 text-lg ">{about.slice(0, 200)}...</p>
+                  <p className="py-2 text-sm  ">{about.slice(0, 220)}...</p>
 
                   <button
-                    className="px-2 py-1 bg-gray-100 rounded-md hover:text-red-700 hover:bg-white self-end"
+                    className="px-2 py-1 bg-gray-100 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
                     onClick={(e) => {
                       e.stopPropagation();
                       removeHistoryHandler(id);

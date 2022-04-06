@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export function NestedRoutes() {
   const { isMenu, triggerLogin, triggerSignup } = useMenu();
+
   return (
     <>
       <SliderMenu />
