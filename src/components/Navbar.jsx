@@ -17,7 +17,7 @@ export function Navbar() {
     try {
       userDispatch({ type: LOGOUT });
       navigate("/");
-      // setTriggerLogin(false);
+      setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged out!" });
     } catch (err) {
       console.error(err);
@@ -49,7 +49,7 @@ export function Navbar() {
           {/* LOGO */}
           <Link to="/">
             <div className="flex flex-row pl-5 ">
-              <img src="/assets/logo.svg" className="w-6 color-red" />
+              <img src="/assets/logo.svg" className="h-7 color-red" />
               <h1 className="font-bold text-2xl pl-1 text-red-700 font-sans">
                 Tapes
               </h1>

@@ -86,7 +86,7 @@ export function WatchLater() {
                   <p className="py-2 text-sm  ">{about.slice(0, 220)}...</p>
 
                   <button
-                    className="px-2 py-1 bg-gray-100 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
+                    className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
                     onClick={async (e) => {
                       removeWatchLateHandler(e, id, encodedToken);
                     }}

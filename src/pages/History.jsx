@@ -3,6 +3,7 @@ import { useUser, useVideos } from "hooks";
 import { v4 as uuid } from "uuid";
 import { deleteHistory } from "apiCalls";
 import { DELHISTORY } from "hooks/reducer/userReducer/types";
+import { MdDelete } from "react-icons/md";
 
 export function History() {
   const navigate = useNavigate();
@@ -26,6 +27,18 @@ export function History() {
         Watch History
       </h2>
       <hr className="my-1 color-slate-300" />
+
+      {history.length > 0 && (
+        <button
+          className="flex flex-row items-center justify-center gap-1 px-2 py-1 bg-gray-100 rounded-md text-sm hover:text-red-700
+        hover:bg-white self-end m-2"
+        >
+          Delete all
+          <div className="text-lg">
+            <MdDelete />
+          </div>
+        </button>
+      )}
 
       <div className="flex flex-col">
         {history.map(
@@ -72,13 +85,13 @@ export function History() {
                   <p className="py-2 text-sm  ">{about.slice(0, 220)}...</p>
 
                   <button
-                    className="px-2 py-1 bg-gray-100 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
+                    className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
                     onClick={(e) => {
                       e.stopPropagation();
                       removeHistoryHandler(id);
                     }}
                   >
-                    Remove
+                    Delete
                   </button>
                 </div>
               </div>
