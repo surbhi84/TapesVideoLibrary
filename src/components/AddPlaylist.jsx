@@ -5,6 +5,7 @@ import { MdVpnKey, MdAdd } from "react-icons/md";
 import { HiEyeOff, HiEye } from "react-icons/hi";
 import { authLogin } from "apiCalls";
 import { LOGIN, useMenu, useUser } from "hooks";
+import { useEffect } from "react";
 
 export function AddPlaylist() {
   const { triggerLogin, setTriggerSignup, setTriggerLogin, setSuccessToast } =
@@ -14,6 +15,7 @@ export function AddPlaylist() {
       user: { playlists },
     },
     userDispatch,
+    isAuth,
   } = useUser();
   const { triggerAddPlaylist, setTriggerAddPlaylist } = useMenu();
 
@@ -37,7 +39,7 @@ export function AddPlaylist() {
   console.log(playlist);
   return (
     <>
-      {triggerAddPlaylist ? (
+      {triggerAddPlaylist && (
         <div
           className="flex flex-row items-center justify-center bg-black/40 fixed w-full h-screen p-2 inset-0 overflow-hidden"
           onClick={() => setTriggerAddPlaylist(false)}
@@ -62,9 +64,9 @@ export function AddPlaylist() {
                   className="w-full outline-none"
                   onChange={() => {}}
                 />
-                <div className="">
+                <button className="text-xl hover:scale-110 hover:text-red-700">
                   <MdAdd />
-                </div>
+                </button>
               </div>
             )}
 
@@ -85,14 +87,8 @@ export function AddPlaylist() {
                 );
               })}
             </div>
-
-            <button className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-8 px-4 mt-6 w-64 disabled:opacity-50 ">
-              Add
-            </button>
           </div>
         </div>
-      ) : (
-        ""
       )}
     </>
   );

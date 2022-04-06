@@ -86,6 +86,17 @@ export function SingleVideo() {
     }
   }
 
+  // DISLIKE HANDLER
+
+  function dislikeHandler() {
+    isAuth()
+      ? setDislike((p) => !p)
+      : setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
+  }
+
   // WATCHLATER HANDLER
 
   async function watchLaterHandler(video, watchLater) {
@@ -121,6 +132,15 @@ export function SingleVideo() {
     } catch (err) {
       console.error(err);
     }
+  }
+
+  function addPlaylistHandler() {
+    isAuth()
+      ? setTriggerAddPlaylist(true)
+      : setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
   }
 
   return (
@@ -178,9 +198,7 @@ export function SingleVideo() {
                   </button>
                   <button
                     className="flex flex-row text-lg gap-1 hover:scale-110"
-                    onClick={() => {
-                      setDislike((p) => !p);
-                    }}
+                    onClick={dislikeHandler}
                   >
                     {dislike ? <MdThumbDown /> : <BiDislike />}Dislike
                   </button>
@@ -195,7 +213,7 @@ export function SingleVideo() {
                   </button>
                   <button
                     className="flex flex-row text-lg gap-1 hover:scale-110"
-                    onClick={() => setTriggerAddPlaylist(true)}
+                    onClick={addPlaylistHandler}
                   >
                     <RiPlayListAddLine />
                     Save
