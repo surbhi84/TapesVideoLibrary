@@ -8,11 +8,6 @@ module.exports = {
       spacing: {
         notFull: "-100%",
       },
-      colors: {
-        // Configure your color palette here
-        "custom-green": "#66bb6a",
-        yy: "var(--a)",
-      },
       fontFamily: {
         Lato: ["Lato", "sans-serif"],
         Poppins: ["Poppins", "sans-serif"],

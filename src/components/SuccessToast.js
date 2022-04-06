@@ -15,20 +15,13 @@ export function SuccessToast() {
 
   return (
     <>
-      {successToast.show === true ? (
+      {successToast.show === true && (
         <div
-          className="flex flex-col items-center justify-center bg-black/40 absolute w-full h-screen"
-          onClick={() => setSuccessToast(false)}
+          className="flex flex-row items-center justify-center absolute bg-white shadow-lg text-md text-center rounded-lg border-2 border-red-700 px-10 h-10 animate-bounce ease"
+          onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className="flex flex-row items-center justify-center absolute bg-white shadow-lg text-lg text-center rounded-lg border-2 border-red-700 w-80 h-14"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {successToast.msg}
-          </div>
+          {successToast.msg}
         </div>
-      ) : (
-        ""
       )}
     </>
   );

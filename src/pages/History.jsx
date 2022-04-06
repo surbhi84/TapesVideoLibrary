@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useUser, useVideos } from "hooks";
+import { useUser } from "hooks";
 import { v4 as uuid } from "uuid";
 import { deleteHistory } from "apiCalls";
 import { DELHISTORY } from "hooks/reducer/userReducer/types";

@@ -1,9 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useUser, useVideos } from "hooks";
-
+import { useUser } from "hooks";
 import { v4 as uuid } from "uuid";
-import { deleteHistory } from "apiCalls";
-import { DELHISTORY } from "hooks/reducer/userReducer/types";
 
 export function LikedVids() {
   const navigate = useNavigate();
@@ -11,15 +8,8 @@ export function LikedVids() {
   const {
     user: {
       user: { likes },
-      encodedToken,
     },
-    userDispatch,
   } = useUser();
-
-  // function removeHistoryHandler(id) {
-  //   const response = deleteHistory(id, encodedToken);
-  //   userDispatch({ type: DELHISTORY, payload: id });
-  // }
 
   return (
     <div className="flex flex-col flex-wrap px-8">

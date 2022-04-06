@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BiLike, BiDislike } from "react-icons/bi";
 import {
   MdOutlineWatchLater,
@@ -16,7 +16,6 @@ import {
   postWatchLater,
   deleteWatchLater,
 } from "apiCalls";
-import { WatchLater } from "pages";
 import {
   ADDLIKEDVIDEO,
   DELLIKEDVIDEO,
@@ -46,10 +45,9 @@ export function SingleVideo() {
       setWatchLater(true);
   }, []);
 
-  console.log(encodedToken);
   const singleVideo = videoList.find((vid) => vid.id === videoId);
 
-  // LIKEhNADELR
+  // LIKEHANDLER
 
   async function likeHandler(video, like) {
     try {
@@ -124,13 +122,10 @@ export function SingleVideo() {
     }
   }
 
-  console.log(1212);
-
   return (
     <>
       {singleVideo ? (
         <div>
-          {/* <div className="flex flex-col w-full h-screen mt-2"> */}
           <div className="h-screen">
             {/* VIDEO PLAYER */}
             <iframe

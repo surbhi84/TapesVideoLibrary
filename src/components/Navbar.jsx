@@ -1,6 +1,5 @@
 import { LOGOUT, useMenu, useUser } from "hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export function Navbar() {
   const {
@@ -23,14 +22,6 @@ export function Navbar() {
       console.error(err);
     }
   }
-  console.log(8888);
-
-  // useEffect(() => {
-  //   if (triggerLogin) document.body.style.overflow = "hidden";
-  //   else {
-  //     document.body.style.overflow = "auto";
-  //   }
-  // }, [triggerLogin]);
 
   return (
     <>

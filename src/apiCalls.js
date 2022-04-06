@@ -44,10 +44,8 @@ export function deleteAllHistory() {
   return axios.delete("/api/user/history/all");
 }
 
-// WATCHLATER RELATED API CALLS
-// export function addWatchLater(id,encodedToken)
-
 // LIKES MANAGING API'S
+
 export function postLike(video, encodedToken) {
   return axios.post(
     "/api/user/likes/",
@@ -57,13 +55,13 @@ export function postLike(video, encodedToken) {
 }
 
 export function deleteLike(id, encodedToken) {
-  console.log("/api/user/likes/" + id);
   return axios.delete("/api/user/likes/" + id, {
     headers: { authorization: encodedToken },
   });
 }
 
-// WATCHLATER MANAGING API'S
+// WATCHLATER RELATED API CALLS
+
 export function postWatchLater(video, encodedToken) {
   return axios.post(
     "/api/user/watchlater/",
@@ -73,7 +71,6 @@ export function postWatchLater(video, encodedToken) {
 }
 
 export function deleteWatchLater(id, encodedToken) {
-  console.log("/api/user/watchlater/" + id);
   return axios.delete("/api/user/watchlater/" + id, {
     headers: { authorization: encodedToken },
   });

@@ -11,15 +11,18 @@ import {
   Settings,
   SingleVideo,
 } from "pages";
+import { useMenu } from "hooks";
 
 function App() {
+  const { successToast } = useMenu();
+
   return (
     <div className="App font-Lato">
       <Navbar />
       <Login />
       <Signup />
       {/* SUCCESS_TOAST ONLY APPEARS IF THERE'S A SUCCESS MESSAGE TO SHOW */}
-      <SuccessToast />
+      {successToast.show && <SuccessToast />}
       <Link to="/ts">MockMan</Link>
       <Routes>
         <Route path="/" element={<NestedRoutes />}>
