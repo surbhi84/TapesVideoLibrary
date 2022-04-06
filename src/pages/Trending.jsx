@@ -1,41 +1,62 @@
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { useVideos } from "hooks";
+import { useUser, useVideos } from "hooks";
+import { postHistory } from "apiCalls";
+import { ADDHISTORY } from "hooks/reducer/userReducer/types";
 
 export function Trending() {
   const navigate = useNavigate();
   const { videoList } = useVideos();
+  const { isAuth, user, userDispatch } = useUser();
   const trendingVids = videoList.filter((vid) => vid.isTrending);
 
-  return (
-    <div className="flex flex-col flex-wrap px-8">
-      <h2 className="text-2xl mt-4">Trending Videos</h2>
-      <hr className="my-4 color-slate-300" />
+  async function videoCardOnClickHandler({ video }) {
+    try {
+      navigate(`/video/${video.id}`, {
+        state: video.id,
+      });
+      if (isAuth()) {
+        await postHistory(video, user.encodedToken);
+        userDispatch({ type: ADDHISTORY, payload: video });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-      <div className="flex flex-row">
+  return (
+    <div className="flex flex-col flex-wrap">
+      <h2 className="text-lg font-semibold text-gray-700 mt-4">
+        Trending Videos
+      </h2>
+      <hr className="my-1 color-slate-300" />
+
+      <div className="grid grid-cols-auto-fit justify-center ">
         {trendingVids.map(
           ({ id, title, creator, views, uploadedOn, about, img, avatar }) => (
             <div
-              className="h-2/4 w-2/5 p-3"
+              className="p-2"
               key={uuid()}
               onClick={() => {
-                navigate(`/video/${id}`, {
-                  state: {
+                videoCardOnClickHandler({
+                  video: {
                     id,
                     title,
                     creator,
                     views,
                     uploadedOn,
                     about,
+                    img,
+                    avatar,
                   },
                 });
               }}
             >
               {/* VIDEO */}
-              <img className="h-52 w-full " src={img}></img>
+              <img className="h-48 w-full " src={img}></img>
 
               {/* VIDEO DETAILS*/}
-              <p className="font-bold mt-2">{title}</p>
+              <p className="font-semibold mt-2">{title.slice(0, 50)}</p>
 
               <div className="flex flex-row gap-3 mt-2">
                 <img
@@ -44,7 +65,7 @@ export function Trending() {
                   className="rounded-full h-10"
                 />
 
-                <div className="text-slate-600">
+                <div className="text-slate-600 text-sm">
                   <p>{creator}</p>
                   <span className="flex flex-row flex-wrap items-center">
                     {views}

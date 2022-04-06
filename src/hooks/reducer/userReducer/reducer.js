@@ -1,5 +1,13 @@
 import { useReducer } from "react";
-import { LOGIN, LOGOUT, SIGNUP } from "./types";
+import {
+  ADDHISTORY,
+  DELHISTORY,
+  GETHISTORY,
+  LOGIN,
+  LOGOUT,
+  SETHISTORY,
+  SIGNUP,
+} from "./types";
 
 // REDUCER CUSTOM HOOK
 export const useUserReducer = () => {
@@ -25,6 +33,22 @@ export const useUserReducer = () => {
       }
       case LOGOUT: {
         return initialUser;
+      }
+      case ADDHISTORY: {
+        return {
+          ...state,
+          user: { ...state.user, history: [...state.user.history, payload] },
+        };
+      }
+      case DELHISTORY: {
+        const newHistory = state.user.history.filter((i) => i.id !== payload);
+        return { ...state, user: { ...state.user, history: newHistory } };
+      }
+      // case GETHISTORY: {
+      //   return { ...state, user: { ...state.user, history : {...state.user.history} } };
+      // }
+      case SETHISTORY: {
+        return payload;
       }
     }
   }

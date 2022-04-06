@@ -17,7 +17,7 @@ export function SuccessToast() {
     <>
       {successToast.show === true ? (
         <div
-          className="flex flex-row items-center justify-center bg-black/40 absolute w-full h-screen"
+          className="flex flex-col items-center justify-center bg-black/40 absolute w-full h-screen"
           onClick={() => setSuccessToast(false)}
         >
           <div

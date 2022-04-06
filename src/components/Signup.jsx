@@ -38,12 +38,12 @@ export function Signup() {
         >
           {/* LOGIN POPUP */}
           <div
-            className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-10 pb-15w-2/3 md:w-2/4 xl:w-2/6"
+            className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-6 px-10 z-1"
             onClick={(e) => e.stopPropagation()}
           >
-            <label className="flex flex-col align-center gap-2 text-xl w-3/4 ">
+            <label className="flex flex-col align-center gap-0.5 ">
               Name
-              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-10 p-2">
+              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-8 px-1 w-64">
                 <GoPerson />
                 <input
                   type="text"
@@ -56,9 +56,9 @@ export function Signup() {
               </div>
             </label>
 
-            <label className="flex flex-col align-center gap-2 text-xl w-3/4 mt-4">
+            <label className="flex flex-col align-center   gap-0.5 mt-3">
               Email
-              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-10 p-2">
+              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-8 px-1 w-64">
                 <MdEmail />
                 <input
                   type="text"
@@ -71,9 +71,9 @@ export function Signup() {
               </div>
             </label>
 
-            <label className="flex flex-col w-3/4 align-center text-xl gap-2 mt-4">
+            <label className="flex flex-col  align-center gap-0.5 mt-3">
               Password
-              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-10 p-2">
+              <div className="flex flex-row items-center rounded-md border-black border-2 gap-4 h-8 px-1">
                 <MdVpnKey />
                 <input
                   type={showPwd ? "text" : "password"}
@@ -94,9 +94,9 @@ export function Signup() {
               </div>
             </label>
 
-            <label className="flex flex-col w-3/4 align-center text-xl gap-2 mt-4">
+            <label className="flex flex-col  align-center gap-0.5 mt-3">
               Confirm Password
-              <div className="rounded-md h-10 border-black border-2 flex flex-row items-center gap-4 p-2">
+              <div className="rounded-md border-black border-2 flex flex-row items-center gap-4 h-8 px-1">
                 <MdVpnKey />
                 <input
                   type={showConfirmPwd ? "text" : "password"}
@@ -117,7 +117,7 @@ export function Signup() {
               </div>
             </label>
 
-            <div className="flex flex-row justify-between w-3/4 m-2">
+            <div className="flex flex-row mt-4">
               <label>
                 <input
                   type="checkbox"
@@ -126,14 +126,13 @@ export function Signup() {
                     setIsChecked((p) => !p);
                   }}
                   className="accent-red-200"
-                />
-                Accept terms & conditions
+                />{" "}
+                Accept t&c
               </label>
-              <p>Forgot password?</p>
             </div>
 
             <button
-              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-10 px-4 w-3/4 mt-6 disabled:opacity-50 "
+              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-8 px-4 mt-6 w-64 disabled:opacity-50 "
               onClick={signupHandler}
               disabled={
                 password !== confirmPwd ||

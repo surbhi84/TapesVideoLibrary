@@ -14,7 +14,7 @@ export const videos = [
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
 There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "69,574 views",
+    views: "69K views",
     uploadedOn: "Apr 1, 2022",
     isTrending: true,
   },
@@ -27,7 +27,7 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
 There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "1,111,350 views",
+    views: "1.5Mviews",
     uploadedOn: "Mar 29, 2021",
   },
   {
@@ -39,7 +39,7 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
 There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "1,160,331 views",
+    views: "1.3M views",
     uploadedOn: "Apr 5, 2021",
   },
   {
@@ -51,7 +51,7 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
 There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "189,672 views ",
+    views: "189K views ",
     uploadedOn: "Mar 30, 2022",
     isTrending: true,
   },
@@ -64,7 +64,7 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
   There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "1,252,816 views",
+    views: "1.1M views",
     uploadedOn: "Sep 9, 2020",
   },
 
