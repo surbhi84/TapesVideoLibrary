@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /*
 ! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
@@ -641,6 +637,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-48{
   width: 12rem;
+}
+
+.w-1\/4{
+  width: 25%;
 }
 
 .min-w-max{

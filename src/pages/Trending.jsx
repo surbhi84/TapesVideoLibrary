@@ -32,7 +32,7 @@ export function Trending() {
       <hr className="my-1 color-slate-300" />
 
       <div className="grid grid-cols-auto-fit justify-center">
-        {videoList.map(
+        {trendingVids.map(
           ({ id, title, creator, views, uploadedOn, about, img, avatar }) => (
             // VIDEOCARD
             <div
