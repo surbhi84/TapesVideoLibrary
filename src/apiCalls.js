@@ -75,3 +75,17 @@ export function deleteWatchLater(id, encodedToken) {
     headers: { authorization: encodedToken },
   });
 }
+
+// PLAYLIST RELATED API'S
+
+export function getPlaylists(encodedToken) {
+  return axios.get("/api/user/playlists", {
+    headers: { authorization: encodedToken },
+  });
+}
+
+export function deletePlaylist(id, encodedToken) {
+  return axios.delete("/api/user/playlists/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}

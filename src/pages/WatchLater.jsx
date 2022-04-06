@@ -15,19 +15,19 @@ export function WatchLater() {
     userDispatch,
   } = useUser();
 
-  async function removeWatchLateHandler(e, id, encodedToken) {
+  async function removeWatchLateHandler(e, video, encodedToken) {
     e.stopPropagation();
+    userDispatch({
+      type: DELWATCHLATER,
+      payload: video.id,
+    });
     try {
-      await deleteWatchLater(id, encodedToken);
-      userDispatch({
-        type: DELWATCHLATER,
-        payload: id,
-      });
+      await deleteWatchLater(video.id, encodedToken);
     } catch (err) {
       console.error(err);
       userDispatch({
         type: ADDWATCHLATER,
-        payload: { id },
+        payload: video,
       });
       setSuccessToast({
         show: true,
@@ -99,7 +99,20 @@ export function WatchLater() {
                       <button
                         className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
                         onClick={async (e) => {
-                          removeWatchLateHandler(e, id, encodedToken);
+                          removeWatchLateHandler(
+                            e,
+                            {
+                              id,
+                              title,
+                              creator,
+                              views,
+                              uploadedOn,
+                              img,
+                              avatar,
+                              about,
+                            },
+                            encodedToken
+                          );
                         }}
                       >
                         Remove

@@ -22,11 +22,12 @@ import {
   DELWATCHLATER,
   ADDWATCHLATER,
 } from "hooks/reducer/userReducer/types";
+import { AddPlaylist } from "components/AddPlaylist";
 
 export function SingleVideo() {
   const { id: videoId } = useParams();
   const { videoList } = useVideos();
-  const { setSuccessToast } = useMenu();
+  const { setSuccessToast, setTriggerAddPlaylist } = useMenu();
   const [like, setLiked] = useState(false);
   const [dislike, setDislike] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
@@ -126,6 +127,7 @@ export function SingleVideo() {
     <>
       {singleVideo ? (
         <div>
+          <AddPlaylist />
           <div className="h-screen">
             {/* VIDEO PLAYER */}
             <iframe
@@ -191,7 +193,10 @@ export function SingleVideo() {
                     {watchLater ? <MdWatchLater /> : <MdOutlineWatchLater />}
                     Watch Later
                   </button>
-                  <button className="flex flex-row text-lg gap-1 hover:scale-110">
+                  <button
+                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    onClick={() => setTriggerAddPlaylist(true)}
+                  >
                     <RiPlayListAddLine />
                     Save
                   </button>

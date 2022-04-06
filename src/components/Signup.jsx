@@ -33,21 +33,21 @@ export function Signup() {
       {triggerSignup ? (
         // OUTER DIV
         <div
-          className="flex flex-row items-center justify-center w-full h-screen bg-black/40 absolute"
+          className="flex flex-row items-center justify-center w-full h-screen bg-black/40 fixed p-2 inset-0 overflow-hidden"
           onClick={() => setTriggerSignup(false)}
         >
-          {/* LOGIN POPUP */}
+          {/* SIGNUP POPUP */}
           <div
-            className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-6 px-10 z-1"
+            className=" flex flex-col items-center absolute shadow-2xl bg-white rounded-lg py-3 px-4 md:p-6 md:px-10 z-1 text-sm md:text-md "
             onClick={(e) => e.stopPropagation()}
           >
             <label className="flex flex-col align-center gap-0.5 ">
               Name
-              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-8 px-1 w-64">
+              <div className="flex flex-row items-center rounded-md border-black border-2 gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <GoPerson />
                 <input
                   type="text"
-                  className="outline-none"
+                  className="outline-none w-full"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -56,13 +56,13 @@ export function Signup() {
               </div>
             </label>
 
-            <label className="flex flex-col align-center   gap-0.5 mt-3">
+            <label className="flex flex-col align-center gap-0.5 mt-3">
               Email
-              <div className="flex flex-row items-center gap-4 rounded-md border-black border-2 h-8 px-1 w-64">
+              <div className="flex flex-row items-center rounded-md border-black border-2  gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <MdEmail />
                 <input
                   type="text"
-                  className="outline-none"
+                  className="outline-none w-full"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -73,11 +73,11 @@ export function Signup() {
 
             <label className="flex flex-col  align-center gap-0.5 mt-3">
               Password
-              <div className="flex flex-row items-center rounded-md border-black border-2 gap-4 h-8 px-1">
+              <div className="flex flex-row items-center rounded-md border-black border-2  gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <MdVpnKey />
                 <input
                   type={showPwd ? "text" : "password"}
-                  className="outline-none bg-white"
+                  className="outline-none bg-white w-full"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -94,13 +94,13 @@ export function Signup() {
               </div>
             </label>
 
-            <label className="flex flex-col  align-center gap-0.5 mt-3">
+            <label className="flex flex-col align-center gap-0.5 mt-3">
               Confirm Password
-              <div className="rounded-md border-black border-2 flex flex-row items-center gap-4 h-8 px-1">
+              <div className="rounded-md border-black border-2 flex flex-row items-center  gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <MdVpnKey />
                 <input
                   type={showConfirmPwd ? "text" : "password"}
-                  className=" outline-none bg-white"
+                  className=" outline-none bg-white w-full"
                   value={confirmPwd}
                   onChange={(e) => {
                     setConfirmPwd(e.target.value);
@@ -132,7 +132,7 @@ export function Signup() {
             </div>
 
             <button
-              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-8 px-4 mt-6 w-64 disabled:opacity-50 "
+              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md md:h-8 md:px-4 md:mt-4 h-6 px-6 mt-2 md:w-64 disabled:opacity-50 "
               onClick={signupHandler}
               disabled={
                 password !== confirmPwd ||

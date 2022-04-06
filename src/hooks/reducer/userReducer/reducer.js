@@ -9,6 +9,8 @@ import {
   LOGIN,
   LOGOUT,
   SETHISTORY,
+  ADDPLAYLIST,
+  DELPLAYLIST,
 } from "./types";
 
 // REDUCER CUSTOM HOOK
@@ -82,6 +84,23 @@ export const useUserReducer = () => {
           (i) => i.id !== payload
         );
         return { ...state, user: { ...state.user, watchLater: newWatchLater } };
+      }
+
+      case ADDPLAYLIST: {
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            playlists: [...state.user.playlists, ...payload],
+          },
+        };
+      }
+
+      case DELPLAYLIST: {
+        const newPlaylists = state.user.playlists.filter(
+          (i) => i.id !== payload
+        );
+        return { ...state, user: { ...state.user, playlists: newPlaylists } };
       }
     }
   }
