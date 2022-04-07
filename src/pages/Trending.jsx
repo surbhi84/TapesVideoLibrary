@@ -20,13 +20,13 @@ export function Trending() {
         userDispatch({ type: ADDHISTORY, payload: video });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 
   return (
     <>
-      <h2 className="text-md font-semibold text-gray-700 mt-4">
+      <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
         Trending Videos
       </h2>
       <hr className="my-1 color-slate-300" />

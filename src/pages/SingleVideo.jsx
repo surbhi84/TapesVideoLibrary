@@ -7,7 +7,7 @@ import {
   MdThumbUp,
   MdWatchLater,
 } from "react-icons/md";
-import { RiPlayListAddLine } from "react-icons/ri";
+import { CgPlayListAdd } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import { useVideos, useUser, useMenu } from "hooks";
 import {
@@ -22,11 +22,12 @@ import {
   DELWATCHLATER,
   ADDWATCHLATER,
 } from "hooks/reducer/userReducer/types";
+import { AddPlaylist } from "components/AddPlaylist";
 
 export function SingleVideo() {
   const { id: videoId } = useParams();
   const { videoList } = useVideos();
-  const { setSuccessToast } = useMenu();
+  const { setSuccessToast, setTriggerAddPlaylist } = useMenu();
   const [like, setLiked] = useState(false);
   const [dislike, setDislike] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
@@ -59,7 +60,6 @@ export function SingleVideo() {
             userDispatch({ type: DELLIKEDVIDEO, payload: video.id });
           } catch (err) {
             setLiked(true);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         } else {
@@ -69,8 +69,6 @@ export function SingleVideo() {
             userDispatch({ type: ADDLIKEDVIDEO, payload: video });
           } catch (err) {
             setLiked(false);
-            console.error(err);
-
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         }
@@ -81,8 +79,19 @@ export function SingleVideo() {
         });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
+  }
+
+  // DISLIKE HANDLER
+
+  function dislikeHandler() {
+    isAuth()
+      ? setDislike((p) => !p)
+      : setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
   }
 
   // WATCHLATER HANDLER
@@ -97,7 +106,6 @@ export function SingleVideo() {
             userDispatch({ type: DELWATCHLATER, payload: video.id });
           } catch (err) {
             setWatchLater(true);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         } else {
@@ -107,7 +115,6 @@ export function SingleVideo() {
             userDispatch({ type: ADDWATCHLATER, payload: video });
           } catch (err) {
             setWatchLater(false);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         }
@@ -118,15 +125,25 @@ export function SingleVideo() {
         });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
+  }
+
+  function addPlaylistHandler() {
+    isAuth()
+      ? setTriggerAddPlaylist(true)
+      : setSuccessToast({
+          show: true,
+          msg: "Hey! You have to login for this feature.",
+        });
   }
 
   return (
     <>
       {singleVideo ? (
         <div>
-          <div className="h-screen">
+          <AddPlaylist singleVideo={singleVideo} />
+          <div className=" h-3/4 md:h-screen">
             {/* VIDEO PLAYER */}
             <iframe
               className="h-4/6 w-full"
@@ -136,38 +153,19 @@ export function SingleVideo() {
               allowFullScreen
             ></iframe>
 
-            {/* VIDEO DETAILS */}
-            <div className="flex flex-row">
-              <div className="flex flex-col gap-2 mt-2">
-                <p className="text-lg font-semibold">{singleVideo.title}</p>
-                <div className="flex flex-row gap-4 mt-2">
-                  <img
-                    src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
-                    alt=""
-                    className="rounded-full h-12"
-                  />
-                  <div>
-                    <p className="font-semibold text-md">
-                      {singleVideo.creator}
-                    </p>
-                    <span className="flex flex-row flex-wrap items-center text-slate-600 text-sm">
-                      {singleVideo.views}
-                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
-                        {" "}
-                      </span>
-                      {singleVideo.uploadedOn}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
+            <div className="flex md:flex-row flex-col">
+              <p className="text-md md:text-lg font-semibold mt-2 ">
+                {singleVideo.title}
+              </p>
               {/* INTERACTIVE BUTTONS */}
-              <div className="flex flex-row gap-4 mt-2 ml-auto h-8">
+              <div className="flex flex-row gap-3 md:gap-4 my-4 md:mt-2 ml-auto h-4 md:h-8 items-center">
                 <IconContext.Provider
-                  value={{ className: "text-xl self-center text-gray-600" }}
+                  value={{
+                    className: "text-md md:text-xl self-center text-gray-600",
+                  }}
                 >
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-md md:text-lg gap-1 hover:scale-110"
                     onClick={() => {
                       likeHandler(singleVideo, like);
                     }}
@@ -175,15 +173,13 @@ export function SingleVideo() {
                     {like ? <MdThumbUp /> : <BiLike />} Like
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
-                    onClick={() => {
-                      setDislike((p) => !p);
-                    }}
+                    className="flex flex-row text-md md:text-lg gap-1 hover:scale-110"
+                    onClick={dislikeHandler}
                   >
                     {dislike ? <MdThumbDown /> : <BiDislike />}Dislike
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-md md:text-lg  gap-1 hover:scale-110 min-w-max"
                     onClick={() => {
                       watchLaterHandler(singleVideo, watchLater);
                     }}
@@ -191,11 +187,37 @@ export function SingleVideo() {
                     {watchLater ? <MdWatchLater /> : <MdOutlineWatchLater />}
                     Watch Later
                   </button>
-                  <button className="flex flex-row text-lg gap-1 hover:scale-110">
-                    <RiPlayListAddLine />
+                  <button
+                    className="flex flex-row text-md md:text-lg  gap-1 hover:scale-110"
+                    onClick={addPlaylistHandler}
+                  >
+                    <CgPlayListAdd />
                     Save
                   </button>
                 </IconContext.Provider>
+              </div>
+            </div>
+
+            {/* VIDEO DETAILS */}
+            <div className="flex flex-col gap-2 mt-2">
+              <div className="flex flex-row gap-2 md:gap-4 mt-2 mb-1 ">
+                <img
+                  src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
+                  alt=""
+                  className="rounded-full h-8 md:h-12"
+                />
+                <div>
+                  <p className="font-semibold text-sm md:text-md">
+                    {singleVideo.creator}
+                  </p>
+                  <span className="flex flex-row flex-wrap items-center text-slate-600  text-xs md:text-sm">
+                    {singleVideo.views}
+                    <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
+                      {" "}
+                    </span>
+                    {singleVideo.uploadedOn}
+                  </span>
+                </div>
               </div>
             </div>
 

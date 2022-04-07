@@ -24,7 +24,7 @@ export function Login() {
       setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged in!" });
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 
@@ -36,16 +36,16 @@ export function Login() {
           onClick={() => setTriggerLogin(false)}
         >
           <div
-            className="flex flex-col items-center absolute shadow-2xl bg-white rounded-lg p-6 px-10 z-1 "
+            className="flex flex-col items-center absolute shadow-2xl bg-white rounded-lg py-3 px-4 md:p-6 md:px-10 z-1 text-sm md:text-md "
             onClick={(e) => e.stopPropagation()}
           >
             <label className="flex flex-col align-center gap-0.5">
               Email
-              <div className="rounded-md border-black border-2 flex flex-row items-center gap-2 h-8 px-1 w-64">
+              <div className="rounded-md border-black border-2 flex flex-row items-center gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <GoPerson />
                 <input
                   type="text"
-                  className=" outline-none"
+                  className=" outline-none w-full"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -54,13 +54,13 @@ export function Login() {
               </div>
             </label>
 
-            <label className="flex flex-col align-center gap-0.5 mt-6">
+            <label className="flex flex-col align-center gap-0.5 mt-4">
               Password
-              <div className="rounded-md border-black border-2 flex flex-row items-center gap-4 h-8 px-1 ">
+              <div className="rounded-md border-black border-2 flex flex-row items-center gap-2 px-1 h-6 w-48 md:h-8 md:w-64 overflow-hidden">
                 <MdVpnKey />
                 <input
                   type={showPwd ? "text" : "password"}
-                  className=" outline-none bg-white"
+                  className=" outline-none bg-white w-full"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -77,21 +77,21 @@ export function Login() {
               </div>
             </label>
 
-            <div className="flex flex-row justify-between w-64 mt-1">
+            <div className="flex flex-row justify-between md:w-64 mt-1 ">
               <label>
                 <input type="checkbox" className="accent-red-200" /> Remember me
               </label>
             </div>
 
             <button
-              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md h-8 px-4 mt-6 w-64 disabled:opacity-50 "
+              className="bg-gray-200 hover:bg-gray-100 hover:text-red-700 font-bold bg-red-700 text-white shadow-md rounded-md md:h-8 md:px-4 h-6 px-6 mt-4 md:w-64 disabled:opacity-50 "
               onClick={loginHandler}
               disabled={password === "" || email === ""}
             >
               Login
             </button>
             <button
-              className=" font-bold text-red-700 rounded-md h-10 px-4 mt-2 decoration-solid hover:scale-110"
+              className=" font-bold text-red-700 rounded-md md:h-10 md:px-4 h-6 px-2 mt-2 decoration-solid hover:scale-110"
               onClick={() => {
                 setTriggerSignup(true);
                 setTriggerLogin((p) => !p);

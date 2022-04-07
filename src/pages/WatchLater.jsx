@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useUser, useVideos } from "hooks";
+import { useUser } from "hooks";
 import { v4 as uuid } from "uuid";
 import { deleteWatchLater } from "apiCalls";
 import { ADDWATCHLATER, DELWATCHLATER } from "hooks/reducer/userReducer/types";
@@ -15,19 +15,18 @@ export function WatchLater() {
     userDispatch,
   } = useUser();
 
-  async function removeWatchLateHandler(e, id, encodedToken) {
+  async function removeWatchLateHandler(e, video, encodedToken) {
     e.stopPropagation();
+    userDispatch({
+      type: DELWATCHLATER,
+      payload: video.id,
+    });
     try {
-      await deleteWatchLater(id, encodedToken);
-      userDispatch({
-        type: DELWATCHLATER,
-        payload: id,
-      });
+      await deleteWatchLater(video.id, encodedToken);
     } catch (err) {
-      console.error(err);
       userDispatch({
         type: ADDWATCHLATER,
-        payload: { id },
+        payload: video,
       });
       setSuccessToast({
         show: true,
@@ -38,10 +37,12 @@ export function WatchLater() {
 
   return (
     <div className="flex flex-col flex-wrap px-8">
-      <h2 className="text-lg font-semibold text-gray-700 mt-4">Watch Later </h2>
+      <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
+        Watch Later{" "}
+      </h2>
       <hr className="my-1 color-slate-300" />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-2">
         {watchLater.length > 0 ? (
           <>
             {watchLater.map(
@@ -57,7 +58,7 @@ export function WatchLater() {
               }) => (
                 // VIDEOCARD
                 <div
-                  className="flex flex-row items-center shadow-lg hover:bg-gray-100 gap-10 p-3 "
+                  className="flex flex-row items-center shadow-lg hover:bg-gray-100 gap-10 p-3"
                   key={uuid()}
                   onClick={() => {
                     navigate(`/video/${id}`, {
@@ -98,8 +99,21 @@ export function WatchLater() {
 
                       <button
                         className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
-                        onClick={async (e) => {
-                          removeWatchLateHandler(e, id, encodedToken);
+                        onClick={(e) => {
+                          removeWatchLateHandler(
+                            e,
+                            {
+                              id,
+                              title,
+                              creator,
+                              views,
+                              uploadedOn,
+                              img,
+                              avatar,
+                              about,
+                            },
+                            encodedToken
+                          );
                         }}
                       >
                         Remove
@@ -113,11 +127,11 @@ export function WatchLater() {
         ) : (
           <div className="flex flex-col items-center mt-4 ">
             <img
-              src="./assets/images/watch.svg"
-              alt="hoem cinema"
+              src="/assets/images/watch.svg"
+              alt="home cinema"
               className="w-1/4"
             />
-            <p className="text-md p-2">
+            <p className="text-sm md:text-base p-2">
               Login and start adding videos to watch later
             </p>
           </div>

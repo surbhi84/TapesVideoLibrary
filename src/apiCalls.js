@@ -75,3 +75,47 @@ export function deleteWatchLater(id, encodedToken) {
     headers: { authorization: encodedToken },
   });
 }
+
+// PLAYLIST RELATED API'S
+
+export function getPlaylists(encodedToken) {
+  return axios.get("/api/user/playlists", {
+    headers: { authorization: encodedToken },
+  });
+}
+
+export function postPlaylist(playlist, encodedToken) {
+  return axios.post("/api/user/playlists", playlist, {
+    headers: { authorization: encodedToken },
+  });
+}
+
+export function deletePlaylist(id, encodedToken) {
+  return axios.delete("/api/user/playlists/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}
+
+// managing videos of playlists
+
+export function getPlaylistVideos(id, encodedToken) {
+  return axios.get("/user/playlists/" + id, {
+    headers: { authorization: encodedToken },
+  });
+}
+
+export function postPlaylistVideo(video, playlistId, encodedToken) {
+  return axios.post(
+    "/api/user/playlists/" + playlistId,
+    { video },
+    {
+      headers: { authorization: encodedToken },
+    }
+  );
+}
+
+export function deletePlaylistVideo(videoId, playlistId, encodedToken) {
+  return axios.delete("/api/user/playlists/" + playlistId + "/" + videoId, {
+    headers: { authorization: encodedToken },
+  });
+}

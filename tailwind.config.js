@@ -12,9 +12,11 @@ module.exports = {
         Lato: ["Lato", "sans-serif"],
         Poppins: ["Poppins", "sans-serif"],
       },
+      screens: {
+        xs: "370px",
+      },
     },
   },
-
   plugins: [],
   darkMode: "class",
 };

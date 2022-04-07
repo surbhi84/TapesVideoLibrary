@@ -11,6 +11,7 @@ export function MenuProvider({ children }) {
     show: false,
     msg: "",
   });
+  const [triggerAddPlaylist, setTriggerAddPlaylist] = useState(false);
 
   return (
     <MenuBtnContext.Provider
@@ -23,6 +24,8 @@ export function MenuProvider({ children }) {
         setTriggerSignup,
         successToast,
         setSuccessToast,
+        triggerAddPlaylist,
+        setTriggerAddPlaylist,
       }}
     >
       {children}

@@ -66,7 +66,72 @@ export function makeServer({ environment = "development" } = {}) {
           ...item,
           likes: [],
           history: [],
-          playlists: [],
+          playlists: [
+            {
+              id: "p1",
+              name: "playlist1",
+              list: [
+                {
+                  id: "LjVSX9fapVs",
+                  img: "https://raw.githubusercontent.com/surbhi84/test/master/Resources/cats-gift.png",
+                  title: "A Cat's Gift EP 561 | Atashin'chi | [ENG sub]",
+                  creator: "[Anime] Atashin'chi Official Channel",
+                  avatar:
+                    "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
+                  about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
+          There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
+                  views: "189K views ",
+                  uploadedOn: "Mar 30, 2022",
+                  isTrending: true,
+                },
+                {
+                  id: "lh4pj4meWO0",
+                  img: "https://raw.githubusercontent.com/surbhi84/test/master/Resources/ochugen.png",
+                  title:
+                    "The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG sub]",
+                  creator: "[Anime] Atashin'chi Official Channel",
+                  avatar:
+                    "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
+                  about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
+            There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
+                  views: "1.1M views",
+                  uploadedOn: "Sep 9, 2020",
+                },
+              ],
+            },
+            {
+              id: "p2",
+              name: "playlist2",
+              list: [
+                {
+                  id: "LjVSX9fapVs",
+                  img: "https://raw.githubusercontent.com/surbhi84/test/master/Resources/cats-gift.png",
+                  title: "A Cat's Gift EP 561 | Atashin'chi | [ENG sub]",
+                  creator: "[Anime] Atashin'chi Official Channel",
+                  avatar:
+                    "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
+                  about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
+          There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
+                  views: "189K views ",
+                  uploadedOn: "Mar 30, 2022",
+                  isTrending: true,
+                },
+                {
+                  id: "lh4pj4meWO0",
+                  img: "https://raw.githubusercontent.com/surbhi84/test/master/Resources/ochugen.png",
+                  title:
+                    "The Tachibanas' Ochugen Season EP 113 | Atashin'chi | [ENG sub]",
+                  creator: "[Anime] Atashin'chi Official Channel",
+                  avatar:
+                    "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
+                  about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
+            There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
+                  views: "1.1M views",
+                  uploadedOn: "Sep 9, 2020",
+                },
+              ],
+            },
+          ],
           watchLater: [],
         })
       );

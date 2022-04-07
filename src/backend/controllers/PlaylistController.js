@@ -45,8 +45,11 @@ export const getAllPlaylistsHandler = function (schema, request) {
 export const addNewPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
-    const { playlist } = JSON.parse(request.requestBody);
-    user.playlists.push({ ...playlist, videos: [], id: uuid() });
+    const playlist = JSON.parse(request.requestBody);
+    const name = playlist.name;
+    const list = playlist.list === undefined ? [] : playlist.list;
+    console.log(playlist.list);
+    user.playlists.push({ name, list, id: playlist.id });
     return new Response(201, {}, { playlists: user.playlists });
   }
   return new Response(
@@ -111,16 +114,10 @@ export const addVideoToPlaylistHandler = function (schema, request) {
     const playlistId = request.params.playlistId;
     const { video } = JSON.parse(request.requestBody);
     const playlist = user.playlists.find((item) => item.id === playlistId);
-    if (playlist.videos.some((item) => item.id === video.id)) {
-      return new Response(
-        409,
-        {},
-        {
-          errors: ["The video is already in your playlist"],
-        }
-      );
+    if (playlist.list.some((item) => item.id === video.id)) {
+      return new Response(201, {}, { playlist });
     }
-    playlist.videos.push(video);
+    playlist.list.push(video);
     return new Response(201, {}, { playlist });
   }
   return new Response(
@@ -139,12 +136,14 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
     const playlistId = request.params.playlistId;
+    console.log(playlistId);
     const videoId = request.params.videoId;
+    console.log(videoId);
     let playlist = user.playlists.find((item) => item.id === playlistId);
-    const filteredVideos = playlist.videos.filter(
-      (item) => item.id !== videoId
-    );
-    playlist.videos = filteredVideos;
+    console.log(playlist);
+    const filteredVideos = playlist.list.filter((item) => item.id !== videoId);
+    console.log(filteredVideos);
+    playlist.list = filteredVideos;
     return new Response(200, {}, { playlist });
   }
   return new Response(

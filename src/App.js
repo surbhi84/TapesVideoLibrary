@@ -1,5 +1,4 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Mockman from "mockman-js";
 import { Navbar, NestedRoutes, Login, Signup, SuccessToast } from "components";
 import {
   Home,
@@ -10,6 +9,7 @@ import {
   LikedVids,
   Settings,
   SingleVideo,
+  SinglePlaylist,
 } from "pages";
 import { useMenu } from "hooks";
 
@@ -21,9 +21,8 @@ function App() {
       <Navbar />
       <Login />
       <Signup />
-      {/* SUCCESS_TOAST ONLY APPEARS IF THERE'S A SUCCESS MESSAGE TO SHOW */}
+      {/* SUCCESS_TOAST ONLY APPEARS IF THERE'S A MESSAGE TO SHOW,ALSO SUCCESS TOAST SHOWS ERRORS AS WELL FOR NOW*/}
       {successToast.show && <SuccessToast />}
-      <Link to="/ts">MockMan</Link>
       <Routes>
         <Route path="/" element={<NestedRoutes />}>
           <Route path="/" element={<Home />} />
@@ -34,7 +33,7 @@ function App() {
           <Route path="/likedvideos" element={<LikedVids />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/video/:id" element={<SingleVideo />} />
-          <Route path="/ts" element={<Mockman />} />
+          <Route path="/playlist/:id" element={<SinglePlaylist />} />
         </Route>
       </Routes>
     </div>
