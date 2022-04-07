@@ -51,14 +51,14 @@
 ## About The Project
 
 ### Home Page
-<img width="948" alt="2022-02-22 (6)" src="https://user-images.githubusercontent.com/56334321/155137577-97d2aab8-a58c-4679-a07a-6002ed6e009a.png">
+
 
 ### Product Listing Page
-<img width="945" alt="2022-02-22 (7)" src="https://user-images.githubusercontent.com/56334321/155137669-444eaff9-fe1d-42d6-ada7-e65c127ca8f3.png">
+
 
 Tapes videoLibrary is made using few of the main features in mind,for ex you will be able to do all the must have features for a video library.One main feature of tapes is that it does not contain any library for ui components, everything has been made from scratch including all the popups and toasts or even sidebar.Also Tapes makes use of a mock backend for all the server calls.
 
-Features:
+## Features:
 
 [General]
 - Tapes video library has a simple UI to get you started.
@@ -94,7 +94,7 @@ Tapes tech Stack:
 
 ## Getting Started
 
-//
+
 
 ### Prerequisites
 
