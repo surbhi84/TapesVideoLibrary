@@ -98,7 +98,7 @@ export function WatchLater() {
 
                       <button
                         className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
-                        onClick={async (e) => {
+                        onClick={(e) => {
                           removeWatchLateHandler(
                             e,
                             {

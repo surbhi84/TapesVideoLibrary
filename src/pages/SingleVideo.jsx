@@ -148,7 +148,7 @@ export function SingleVideo() {
       {singleVideo ? (
         <div>
           <AddPlaylist singleVideo={singleVideo} />
-          <div className="h-screen">
+          <div className=" h-3/4 md:h-screen">
             {/* VIDEO PLAYER */}
             <iframe
               className="h-4/6 w-full"
@@ -158,38 +158,19 @@ export function SingleVideo() {
               allowFullScreen
             ></iframe>
 
-            {/* VIDEO DETAILS */}
-            <div className="flex flex-row">
-              <div className="flex flex-col gap-2 mt-2">
-                <p className="text-lg font-semibold">{singleVideo.title}</p>
-                <div className="flex flex-row gap-4 mt-2">
-                  <img
-                    src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
-                    alt=""
-                    className="rounded-full h-12"
-                  />
-                  <div>
-                    <p className="font-semibold text-md">
-                      {singleVideo.creator}
-                    </p>
-                    <span className="flex flex-row flex-wrap items-center text-slate-600 text-sm">
-                      {singleVideo.views}
-                      <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
-                        {" "}
-                      </span>
-                      {singleVideo.uploadedOn}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
+            <div className="flex md:flex-row flex-col">
+              <p className="text-md md:text-lg font-semibold mt-2.5 ">
+                {singleVideo.title}
+              </p>
               {/* INTERACTIVE BUTTONS */}
-              <div className="flex flex-row gap-4 mt-2 ml-auto h-8">
+              <div className="flex flex-row gap-3 md:gap-4 my-4 md:mt-2 m-auto md:ml-auto h-4 md:h-8 items-center">
                 <IconContext.Provider
-                  value={{ className: "text-xl self-center text-gray-600" }}
+                  value={{
+                    className: "text-md md:text-xl self-center text-gray-600",
+                  }}
                 >
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-md md:text-lg gap-1 hover:scale-110"
                     onClick={() => {
                       likeHandler(singleVideo, like);
                     }}
@@ -197,13 +178,13 @@ export function SingleVideo() {
                     {like ? <MdThumbUp /> : <BiLike />} Like
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-md md:text-lg gap-1 hover:scale-110"
                     onClick={dislikeHandler}
                   >
                     {dislike ? <MdThumbDown /> : <BiDislike />}Dislike
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110 min-w-max"
+                    className="flex flex-row text-md md:text-lg  gap-1 hover:scale-110 min-w-max"
                     onClick={() => {
                       watchLaterHandler(singleVideo, watchLater);
                     }}
@@ -212,13 +193,36 @@ export function SingleVideo() {
                     Watch Later
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-md md:text-lg  gap-1 hover:scale-110"
                     onClick={addPlaylistHandler}
                   >
                     <CgPlayListAdd />
                     Save
                   </button>
                 </IconContext.Provider>
+              </div>
+            </div>
+
+            {/* VIDEO DETAILS */}
+            <div className="flex flex-col gap-2 mt-2">
+              <div className="flex flex-row gap-2 md:gap-4 mt-2 mb-1 ">
+                <img
+                  src="https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg"
+                  alt=""
+                  className="rounded-full h-8 md:h-12"
+                />
+                <div>
+                  <p className="font-semibold text-sm md:text-md">
+                    {singleVideo.creator}
+                  </p>
+                  <span className="flex flex-row flex-wrap items-center text-slate-600  text-xs md:text-sm">
+                    {singleVideo.views}
+                    <span className="h-1 w-1 m-2 mb-1 bg-slate-600 rounded-full">
+                      {" "}
+                    </span>
+                    {singleVideo.uploadedOn}
+                  </span>
+                </div>
               </div>
             </div>
 

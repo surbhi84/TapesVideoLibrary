@@ -17,7 +17,7 @@ export function LikedVids() {
         Liked Videos{" "}
       </h2>
       <hr className="my-1 color-slate-300" />
-      {LikedVids > 0 ? (
+      {likes.length > 0 ? (
         <>
           {likes.map(
             ({ id, title, creator, views, uploadedOn, img, avatar, about }) => (

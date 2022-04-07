@@ -62,27 +62,6 @@ export function SliderMenu() {
                 isMenu ? "translate-x-0 " : "-translate-x-full"
               }`}
             >
-              {/* LOGO DIV MIGHT IMPLEMENT IN FUTURE */}
-              {/* <div className="flex flex-row p-6 pl-5">
-          <img
-            src="/assets/icons/menu.svg"
-            alt="menu"
-            className="scale-110 hover:bg-gray-200 rounded-full p-1"
-            onClick={() => {
-              setIsMenu((p) => !p);
-            }}
-          /> */}
-              {/*  LOGO */}
-              {/* <Link to="/">
-            <div className="flex flex-row pl-6 ">
-              <img src="/assets/logo.svg" className="w-8 color-red" />
-              <h1 className="font-bold text-3xl pl-1 text-red-700 font-sans">
-                Tapes
-              </h1>
-            </div>
-          </Link>
-        </div> */}
-
               {menuTabs.map(({ label, link, icon, alt }) => {
                 return (
                   <NavLink to={link} key={label}>

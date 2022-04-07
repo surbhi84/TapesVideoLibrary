@@ -1,12 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useUser, useVideos } from "hooks";
 import { v4 as uuid } from "uuid";
-import { deletePlaylistVideo, deleteWatchLater } from "apiCalls";
+import {
+  deletePlaylistVideo,
+  deleteWatchLater,
+  getPlaylistVideos,
+} from "apiCalls";
 import {
   ADDPLAYLISTVIDEO,
-  ADDWATCHLATER,
   DELPLAYLISTVIDEO,
-  DELWATCHLATER,
 } from "hooks/reducer/userReducer/types";
 import { useEffect, useState } from "react";
 
@@ -29,17 +31,12 @@ export function SinglePlaylist() {
     setCurrentPlaylist(playlist);
   }, [playlists]);
 
-  async function removePlaylistVideoHandler(
-    e,
-    video,
-    playlistId,
-    encodedToken
-  ) {
-    e.stopPropagation();
+  async function removePlaylistVideoHandler(video, playlistId, encodedToken) {
     userDispatch({
       type: DELPLAYLISTVIDEO,
       payload: { videoId: video.id, playlistId },
     });
+    console.log(currentPlaylist.list, "user");
     try {
       await deletePlaylistVideo(video.id, playlistId, encodedToken);
     } catch (err) {
@@ -123,9 +120,9 @@ export function SinglePlaylist() {
 
                           <button
                             className="px-2 py-1 bg-gray-200 rounded-md text-sm hover:text-red-700 hover:bg-white self-end"
-                            onClick={async (e) => {
+                            onClick={(e) => {
+                              e.stopPropagation();
                               removePlaylistVideoHandler(
-                                e,
                                 {
                                   id,
                                   title,
