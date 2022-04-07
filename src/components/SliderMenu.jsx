@@ -56,10 +56,9 @@ export function SliderMenu() {
             setIsMenu(false);
           }}
         >
-          {" "}
           {isMenu && (
             <div
-              className={`min-w-max flex-col flex-wrap bg-white h-screen absolute ease-in-out duration-300 ${
+              className={`min-w-max flex-col flex-wrap bg-white h-screen absolute ease-in-out duration-1000 ${
                 isMenu ? "translate-x-0 " : "-translate-x-full"
               }`}
             >

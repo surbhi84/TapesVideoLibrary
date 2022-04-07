@@ -1,12 +1,14 @@
 import { useReducer } from "react";
 import {
   ADDHISTORY,
+  ADDLIKEDVIDEO,
+  ADDWATCHLATER,
   DELHISTORY,
-  GETHISTORY,
+  DELWATCHLATER,
+  DELLIKEDVIDEO,
   LOGIN,
   LOGOUT,
   SETHISTORY,
-  SIGNUP,
 } from "./types";
 
 // REDUCER CUSTOM HOOK
@@ -21,6 +23,7 @@ export const useUserReducer = () => {
       likes: [],
       history: [],
       playlists: [],
+      watchLater: [],
     },
     encodedToken: "",
   };
@@ -31,24 +34,54 @@ export const useUserReducer = () => {
       case LOGIN: {
         return payload;
       }
+
       case LOGOUT: {
         return initialUser;
       }
+
       case ADDHISTORY: {
         return {
           ...state,
           user: { ...state.user, history: [...state.user.history, payload] },
         };
       }
+
       case DELHISTORY: {
         const newHistory = state.user.history.filter((i) => i.id !== payload);
         return { ...state, user: { ...state.user, history: newHistory } };
       }
-      // case GETHISTORY: {
-      //   return { ...state, user: { ...state.user, history : {...state.user.history} } };
-      // }
+
       case SETHISTORY: {
         return payload;
+      }
+
+      case ADDLIKEDVIDEO: {
+        return {
+          ...state,
+          user: { ...state.user, likes: [...state.user.likes, payload] },
+        };
+      }
+
+      case DELLIKEDVIDEO: {
+        const newLikes = state.user.likes.filter((i) => i.id !== payload);
+        return { ...state, user: { ...state.user, likes: newLikes } };
+      }
+
+      case ADDWATCHLATER: {
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            watchLater: [...state.user.watchLater, payload],
+          },
+        };
+      }
+
+      case DELWATCHLATER: {
+        const newWatchLater = state.user.watchLater.filter(
+          (i) => i.id !== payload
+        );
+        return { ...state, user: { ...state.user, watchLater: newWatchLater } };
       }
     }
   }

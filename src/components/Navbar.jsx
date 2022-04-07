@@ -1,6 +1,5 @@
 import { LOGOUT, useMenu, useUser } from "hooks";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export function Navbar() {
   const {
@@ -24,13 +23,6 @@ export function Navbar() {
     }
   }
 
-  useEffect(() => {
-    if (triggerLogin) document.body.style.overflow = "hidden";
-    else {
-      document.body.style.overflow = "auto";
-    }
-  }, [triggerLogin]);
-
   return (
     <>
       {/* MAIN HEADER DIV */}
@@ -48,7 +40,7 @@ export function Navbar() {
           {/* LOGO */}
           <Link to="/">
             <div className="flex flex-row pl-5 ">
-              <img src="/assets/logo.svg" className="w-6 color-red" />
+              <img src="/assets/logo.svg" className="h-7 color-red" />
               <h1 className="font-bold text-2xl pl-1 text-red-700 font-sans">
                 Tapes
               </h1>

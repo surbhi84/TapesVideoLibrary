@@ -27,7 +27,7 @@ There’s Mother, who isn’t the best cook and is quite lazy, and Father, who a
       "https://raw.githubusercontent.com/surbhi84/test/master/Resources/atashinchi.jpg",
     about: `The Tachibanas are the quintessential Japanese family, unassuming and infinitely relatable.
 There’s Mother, who isn’t the best cook and is quite lazy, and Father, who always leaves the bathroom door ajar. The high school daughter Mikan seems a bit of a buffoon, and the middle schooler son Yuzuhiko appears to be quite the cold fish at first glance. They’re a bit peculiar… but they were a family everyone could relate to. And they’re back, this time on YouTube!"`,
-    views: "1.5Mviews",
+    views: "1.5M views",
     uploadedOn: "Mar 29, 2021",
   },
   {

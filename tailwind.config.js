@@ -8,6 +8,10 @@ module.exports = {
       spacing: {
         notFull: "-100%",
       },
+      fontFamily: {
+        Lato: ["Lato", "sans-serif"],
+        Poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
 
