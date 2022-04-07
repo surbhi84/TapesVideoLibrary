@@ -11,6 +11,8 @@ import {
   SETHISTORY,
   ADDPLAYLIST,
   DELPLAYLIST,
+  ADDPLAYLISTVIDEO,
+  DELPLAYLISTVIDEO,
 } from "./types";
 
 // REDUCER CUSTOM HOOK
@@ -101,6 +103,47 @@ export const useUserReducer = () => {
           (i) => i.id !== payload
         );
         return { ...state, user: { ...state.user, playlists: newPlaylists } };
+      }
+
+      case ADDPLAYLISTVIDEO: {
+        const selectedPlaylistIndex = state.user.playlists.findIndex(
+          (i) => i.id === payload.playlistId
+        );
+        const selectedPlaylist = {
+          ...state.user.playlists[selectedPlaylistIndex],
+          list: [
+            ...state.user.playlists[selectedPlaylistIndex].list,
+            payload.video,
+          ],
+        };
+
+        const newPlaylist = [...state.user.playlists];
+        newPlaylist[selectedPlaylistIndex] = selectedPlaylist;
+        return {
+          ...state,
+          user: { ...state.user, playlists: newPlaylist },
+        };
+      }
+
+      case DELPLAYLISTVIDEO: {
+        const selectedPlaylistIndex = state.user.playlists.findIndex(
+          (i) => i.id === payload.playlistId
+        );
+        const selectedPlaylist = {
+          ...state.user.playlists[selectedPlaylistIndex],
+        };
+        const newSelectedPlaylistList = selectedPlaylist.list.filter((i) => {
+          i.id !== payload.videoId;
+        });
+        const newPlaylist = [...state.user.playlists];
+        newPlaylist[selectedPlaylistIndex] = {
+          ...selectedPlaylist,
+          list: newSelectedPlaylistList,
+        };
+        return {
+          ...state,
+          user: { ...state.user, playlists: newPlaylist },
+        };
       }
     }
   }

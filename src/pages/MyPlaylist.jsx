@@ -3,6 +3,7 @@ import { ADDPLAYLIST, DELPLAYLIST } from "hooks/reducer/userReducer/types";
 import { MdDelete } from "react-icons/md";
 import { useEffect } from "react";
 import { useUser } from "hooks";
+import { Link } from "react-router-dom";
 
 export function MyPlaylist() {
   const {
@@ -56,6 +57,7 @@ export function MyPlaylist() {
               className=" flex flex-row p-3 items-center w-64 h-16 shadow-md m-4 rounded-sm text-md hover:scale-105"
               key={i.id}
             >
+              <Link to={`/playlist/${i.id}`}> link</Link>
               <div>
                 {i.name}
                 <div className="text-slate-600 text-xs self-end">

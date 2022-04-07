@@ -3,16 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { GoPerson } from "react-icons/go";
 import { MdVpnKey, MdAdd } from "react-icons/md";
 import { HiEyeOff, HiEye } from "react-icons/hi";
-import { authLogin } from "apiCalls";
+import { authLogin, postPlaylist, postPlaylistVideo } from "apiCalls";
 import { LOGIN, useMenu, useUser } from "hooks";
 import { useEffect } from "react";
+import { ADDPLAYLISTVIDEO } from "hooks/reducer/userReducer/types";
 
-export function AddPlaylist() {
+export function AddPlaylist({ singleVideo }) {
   const { triggerLogin, setTriggerSignup, setTriggerLogin, setSuccessToast } =
     useMenu();
   const {
     user: {
       user: { playlists },
+      encodedToken,
     },
     userDispatch,
     isAuth,
@@ -31,6 +33,20 @@ export function AddPlaylist() {
       navigate("/");
       setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged in!" });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function addPlaylistVideoHandler(video, playlist) {
+    userDispatch({
+      type: ADDPLAYLISTVIDEO,
+      payload: { video, playlistId: playlist.id },
+    });
+    try {
+      const res = await postPlaylistVideo(video, playlist.id, encodedToken);
+      setTriggerAddPlaylist(false);
+      setSuccessToast({ show: true, msg: `Added to ${playlist.name} ` });
     } catch (err) {
       console.error(err);
     }
@@ -64,25 +80,31 @@ export function AddPlaylist() {
                   className="w-full outline-none"
                   onChange={() => {}}
                 />
-                <button className="text-xl hover:scale-110 hover:text-red-700">
+                <button
+                  className="text-xl hover:scale-110 hover:text-red-700"
+                  onClick={() => {}}
+                >
                   <MdAdd />
                 </button>
               </div>
             )}
 
             <div className="flex flex-col items-center">
-              {playlists.map((i) => {
+              {playlists.map((playlist) => {
                 return (
                   <label
-                    onChange={() => setPlaylist(i.name)}
-                    key={i.name}
+                    onChange={() => setPlaylist(playlist.name)}
+                    key={playlist.name}
                     className
                   >
                     <input
                       type="checkbox"
                       className="accent-red-200 mr-2"
+                      onClick={() =>
+                        addPlaylistVideoHandler(singleVideo, playlist)
+                      }
                     ></input>
-                    {i.name}
+                    {playlist.name}
                   </label>
                 );
               })}

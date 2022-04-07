@@ -10,6 +10,7 @@ import {
   LikedVids,
   Settings,
   SingleVideo,
+  SinglePlaylist,
 } from "pages";
 import { useMenu } from "hooks";
 
@@ -34,6 +35,8 @@ function App() {
           <Route path="/likedvideos" element={<LikedVids />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/video/:id" element={<SingleVideo />} />
+          <Route path="/playlist/:id" element={<SinglePlaylist />} />
+
           <Route path="/ts" element={<Mockman />} />
         </Route>
       </Routes>

@@ -7,7 +7,7 @@ import {
   MdThumbUp,
   MdWatchLater,
 } from "react-icons/md";
-import { RiPlayListAddLine } from "react-icons/ri";
+import { CgPlayListAdd, CgPlayListCheck } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import { useVideos, useUser, useMenu } from "hooks";
 import {
@@ -147,7 +147,7 @@ export function SingleVideo() {
     <>
       {singleVideo ? (
         <div>
-          <AddPlaylist />
+          <AddPlaylist singleVideo={singleVideo} />
           <div className="h-screen">
             {/* VIDEO PLAYER */}
             <iframe
@@ -203,7 +203,7 @@ export function SingleVideo() {
                     {dislike ? <MdThumbDown /> : <BiDislike />}Dislike
                   </button>
                   <button
-                    className="flex flex-row text-lg gap-1 hover:scale-110"
+                    className="flex flex-row text-lg gap-1 hover:scale-110 min-w-max"
                     onClick={() => {
                       watchLaterHandler(singleVideo, watchLater);
                     }}
@@ -215,7 +215,7 @@ export function SingleVideo() {
                     className="flex flex-row text-lg gap-1 hover:scale-110"
                     onClick={addPlaylistHandler}
                   >
-                    <RiPlayListAddLine />
+                    <CgPlayListAdd />
                     Save
                   </button>
                 </IconContext.Provider>
