@@ -73,13 +73,12 @@ Tapes videoLibrary is made using few of the main features in mind,for ex you wil
 [Technical]
 - It makes use of MockBee a mock Backend that manages all the api calls.
 - It uses TAILWIND CSS.
-- Made using useReducer, context and custom hooks from react.
+- Made using useReducer, context,react router and custom hooks from react.
+- Makes use of absolute path imports.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
-
-Tapes tech Stack:
 
 - [REACT](https://reactjs.org/)
 - [REACT ROUTER](https://reactrouter.com/)
@@ -99,7 +98,7 @@ Tapes tech Stack:
 ### Prerequisites
 
 - You need to have a good grasp of javascript and react concepts.
-- As it uses react router and a lot of api calls a bit of background in the domain would be required.
+- As it uses react router and a lot of api calls a bit of background knowledge in the domain would be required.
 - To understand tailwind you need to have fair knowledge of css.(ps-it was also my first time using tailwind.)
 
 ### Installation
