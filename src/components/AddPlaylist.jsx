@@ -5,12 +5,16 @@ import { MdVpnKey, MdAdd } from "react-icons/md";
 import { HiEyeOff, HiEye } from "react-icons/hi";
 import { authLogin, postPlaylist, postPlaylistVideo } from "apiCalls";
 import { LOGIN, useMenu, useUser } from "hooks";
+import { v4 as uuid } from "uuid";
 import { useEffect } from "react";
-import { ADDPLAYLISTVIDEO } from "hooks/reducer/userReducer/types";
+import {
+  ADDPLAYLISTVIDEO,
+  ADDPLAYLIST,
+  DELPLAYLIST,
+} from "hooks/reducer/userReducer/types";
+import { addNewPlaylistHandler } from "backend/controllers/PlaylistController";
 
 export function AddPlaylist({ singleVideo }) {
-  const { triggerLogin, setTriggerSignup, setTriggerLogin, setSuccessToast } =
-    useMenu();
   const {
     user: {
       user: { playlists },
@@ -19,10 +23,15 @@ export function AddPlaylist({ singleVideo }) {
     userDispatch,
     isAuth,
   } = useUser();
-  const { triggerAddPlaylist, setTriggerAddPlaylist } = useMenu();
+  const {
+    triggerAddPlaylist,
+    setTriggerAddPlaylist,
+    setTriggerLogin,
+    setSuccessToast,
+  } = useMenu();
 
   const navigate = useNavigate();
-  const [playlist, setPlaylist] = useState("");
+  const [playlistName, setPlaylistName] = useState("");
   const [password, setPassword] = useState("adarshBalika123");
   const [showInput, setShowInput] = useState(false);
 
@@ -34,7 +43,7 @@ export function AddPlaylist({ singleVideo }) {
       setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged in!" });
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 
@@ -48,11 +57,29 @@ export function AddPlaylist({ singleVideo }) {
       setTriggerAddPlaylist(false);
       setSuccessToast({ show: true, msg: `Added to ${playlist.name} ` });
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 
-  console.log(playlist);
+  async function addNewPlaylistFromInput(playlistName, video) {
+    const newplaylistToAdd = { id: uuid(), name: playlistName, list: [video] };
+    userDispatch({
+      type: ADDPLAYLIST,
+      payload: newplaylistToAdd,
+    });
+    try {
+      const res = await postPlaylist(newplaylistToAdd, encodedToken);
+      setTriggerAddPlaylist(false);
+      setSuccessToast({ show: true, msg: `Added to ${playlistName} ` });
+    } catch (err) {
+      userDispatch({
+        type: DELPLAYLIST,
+        payload: newplaylistToAdd.id,
+      });
+      setSuccessToast({ show: true, msg: "Something went wrong" });
+    }
+  }
+
   return (
     <>
       {triggerAddPlaylist && (
@@ -78,11 +105,15 @@ export function AddPlaylist({ singleVideo }) {
                 <input
                   type="text"
                   className="w-full outline-none"
-                  onChange={() => {}}
+                  onChange={(e) => {
+                    setPlaylistName(e.target.value);
+                  }}
                 />
                 <button
                   className="text-xl hover:scale-110 hover:text-red-700"
-                  onClick={() => {}}
+                  onClick={() =>
+                    addNewPlaylistFromInput(playlistName, singleVideo)
+                  }
                 >
                   <MdAdd />
                 </button>
@@ -93,7 +124,7 @@ export function AddPlaylist({ singleVideo }) {
               {playlists.map((playlist) => {
                 return (
                   <label
-                    onChange={() => setPlaylist(playlist.name)}
+                    onChange={() => setPlaylistName(playlist.name)}
                     key={playlist.name}
                     className
                   >

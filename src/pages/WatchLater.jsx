@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useUser, useVideos } from "hooks";
+import { useUser } from "hooks";
 import { v4 as uuid } from "uuid";
 import { deleteWatchLater } from "apiCalls";
 import { ADDWATCHLATER, DELWATCHLATER } from "hooks/reducer/userReducer/types";
@@ -24,7 +24,6 @@ export function WatchLater() {
     try {
       await deleteWatchLater(video.id, encodedToken);
     } catch (err) {
-      console.error(err);
       userDispatch({
         type: ADDWATCHLATER,
         payload: video,
@@ -128,8 +127,8 @@ export function WatchLater() {
         ) : (
           <div className="flex flex-col items-center mt-4 ">
             <img
-              src="./assets/images/watch.svg"
-              alt="hoem cinema"
+              src="/assets/images/watch.svg"
+              alt="home cinema"
               className="w-1/4"
             />
             <p className="text-sm md:text-base p-2">

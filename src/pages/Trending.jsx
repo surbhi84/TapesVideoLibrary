@@ -20,7 +20,7 @@ export function Trending() {
         userDispatch({ type: ADDHISTORY, payload: video });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 

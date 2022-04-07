@@ -112,8 +112,8 @@ export function History() {
       ) : (
         <div className="flex flex-col items-center mt-4 ">
           <img
-            src="./assets/images/watch.svg"
-            alt="hoem cinema"
+            src="/assets/images/watch.svg"
+            alt="home cinema"
             className="w-1/4"
           />
           <p className="text-xs xs:text-base p-2">

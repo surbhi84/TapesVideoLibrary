@@ -2,13 +2,8 @@ import { LOGOUT, useMenu, useUser } from "hooks";
 import { Link, useNavigate } from "react-router-dom";
 
 export function Navbar() {
-  const {
-    setIsMenu,
-    setTriggerLogin,
-    setTriggerSignup,
-    setSuccessToast,
-    triggerLogin,
-  } = useMenu();
+  const { setIsMenu, setTriggerLogin, setTriggerSignup, setSuccessToast } =
+    useMenu();
   const { userDispatch, isAuth } = useUser();
   const navigate = useNavigate();
 
@@ -19,7 +14,7 @@ export function Navbar() {
       setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged out!" });
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 

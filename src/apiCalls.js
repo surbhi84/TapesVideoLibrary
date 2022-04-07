@@ -84,14 +84,10 @@ export function getPlaylists(encodedToken) {
   });
 }
 
-export function postPlaylist(name, list, encodedToken) {
-  return axios.post(
-    "/api/user/playlists",
-    { name, list },
-    {
-      headers: { authorization: encodedToken },
-    }
-  );
+export function postPlaylist(playlist, encodedToken) {
+  return axios.post("/api/user/playlists", playlist, {
+    headers: { authorization: encodedToken },
+  });
 }
 
 export function deletePlaylist(id, encodedToken) {

@@ -93,7 +93,7 @@ export const useUserReducer = () => {
           ...state,
           user: {
             ...state.user,
-            playlists: [...state.user.playlists, ...payload],
+            playlists: [...state.user.playlists, payload],
           },
         };
       }
@@ -135,16 +135,11 @@ export const useUserReducer = () => {
         const newSelectedPlaylistList = selectedPlaylist.list.filter(
           (i) => i.id !== payload.videoId
         );
-        console.log(newSelectedPlaylistList);
         const newPlaylist = [...state.user.playlists];
         newPlaylist[selectedPlaylistIndex] = {
           ...selectedPlaylist,
           list: newSelectedPlaylistList,
         };
-        console.log({
-          ...state,
-          user: { ...state.user, playlists: newPlaylist },
-        });
         return {
           ...state,
           user: { ...state.user, playlists: newPlaylist },

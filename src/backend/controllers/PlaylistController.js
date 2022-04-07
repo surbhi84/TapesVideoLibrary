@@ -45,10 +45,11 @@ export const getAllPlaylistsHandler = function (schema, request) {
 export const addNewPlaylistHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
   if (user) {
-    const { playlist } = JSON.parse(request.requestBody);
+    const playlist = JSON.parse(request.requestBody);
     const name = playlist.name;
-    const list = playlist.list | [];
-    user.playlists.push({ name, list, id: uuid() });
+    const list = playlist.list === undefined ? [] : playlist.list;
+    console.log(playlist.list);
+    user.playlists.push({ name, list, id: playlist.id });
     return new Response(201, {}, { playlists: user.playlists });
   }
   return new Response(

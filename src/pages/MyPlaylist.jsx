@@ -1,4 +1,4 @@
-import { deletePlaylist, getPlaylists, getPlaylistVideos } from "apiCalls";
+import { deletePlaylist, getPlaylists } from "apiCalls";
 import { ADDPLAYLIST, DELPLAYLIST } from "hooks/reducer/userReducer/types";
 import { MdDelete } from "react-icons/md";
 import { useEffect } from "react";
@@ -24,7 +24,6 @@ export function MyPlaylist() {
     try {
       await deletePlaylist(playlist.id, encodedToken);
     } catch (err) {
-      console.error(err);
       userDispatch({
         type: ADDPLAYLIST,
         payload: [playlist],
@@ -81,7 +80,7 @@ export function MyPlaylist() {
       ) : (
         <div className="flex flex-col items-center mt-4 ">
           <img
-            src="./assets/images/watch.svg"
+            src="/assets/images/watch.svg"
             alt="home cinema"
             className="w-1/4"
           />

@@ -7,7 +7,7 @@ import {
   MdThumbUp,
   MdWatchLater,
 } from "react-icons/md";
-import { CgPlayListAdd, CgPlayListCheck } from "react-icons/cg";
+import { CgPlayListAdd } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import { useVideos, useUser, useMenu } from "hooks";
 import {
@@ -60,7 +60,6 @@ export function SingleVideo() {
             userDispatch({ type: DELLIKEDVIDEO, payload: video.id });
           } catch (err) {
             setLiked(true);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         } else {
@@ -70,8 +69,6 @@ export function SingleVideo() {
             userDispatch({ type: ADDLIKEDVIDEO, payload: video });
           } catch (err) {
             setLiked(false);
-            console.error(err);
-
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         }
@@ -82,7 +79,7 @@ export function SingleVideo() {
         });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 
@@ -109,7 +106,6 @@ export function SingleVideo() {
             userDispatch({ type: DELWATCHLATER, payload: video.id });
           } catch (err) {
             setWatchLater(true);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         } else {
@@ -119,7 +115,6 @@ export function SingleVideo() {
             userDispatch({ type: ADDWATCHLATER, payload: video });
           } catch (err) {
             setWatchLater(false);
-            console.error(err);
             setSuccessToast({ show: true, msg: "Something went wrong" });
           }
         }
@@ -130,7 +125,7 @@ export function SingleVideo() {
         });
       }
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 

@@ -24,7 +24,7 @@ export function Login() {
       setTriggerLogin(false);
       setSuccessToast({ show: true, msg: "You are Logged in!" });
     } catch (err) {
-      console.error(err);
+      setSuccessToast({ show: true, msg: "Something went wrong" });
     }
   }
 

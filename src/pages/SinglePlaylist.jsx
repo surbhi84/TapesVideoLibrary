@@ -1,11 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useUser, useVideos } from "hooks";
+import { useUser, useMenu } from "hooks";
 import { v4 as uuid } from "uuid";
-import {
-  deletePlaylistVideo,
-  deleteWatchLater,
-  getPlaylistVideos,
-} from "apiCalls";
+import { deletePlaylistVideo } from "apiCalls";
 import {
   ADDPLAYLISTVIDEO,
   DELPLAYLISTVIDEO,
@@ -16,6 +12,7 @@ export function SinglePlaylist() {
   const { id: playlistId } = useParams();
   const navigate = useNavigate();
   const [currentPlaylist, setCurrentPlaylist] = useState({ list: [] });
+  const { setSuccessToast } = useMenu();
 
   const {
     user: {
@@ -36,11 +33,9 @@ export function SinglePlaylist() {
       type: DELPLAYLISTVIDEO,
       payload: { videoId: video.id, playlistId },
     });
-
     try {
       await deletePlaylistVideo(video.id, playlistId, encodedToken);
     } catch (err) {
-      console.error(err);
       userDispatch({
         type: ADDPLAYLISTVIDEO,
         payload: { video, playlistId },
@@ -149,8 +144,8 @@ export function SinglePlaylist() {
             ) : (
               <div className="flex flex-col items-center mt-4 ">
                 <img
-                  src="./assets/images/watch.svg"
-                  alt="hoem cinema"
+                  src="/assets/images/watch.svg"
+                  alt="home cinema"
                   className="w-1/4"
                 />
                 <p className="text-md p-2">
