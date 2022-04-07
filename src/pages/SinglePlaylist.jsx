@@ -36,7 +36,7 @@ export function SinglePlaylist() {
       type: DELPLAYLISTVIDEO,
       payload: { videoId: video.id, playlistId },
     });
-    console.log(currentPlaylist.list, "user");
+
     try {
       await deletePlaylistVideo(video.id, playlistId, encodedToken);
     } catch (err) {
@@ -56,7 +56,7 @@ export function SinglePlaylist() {
     <div className="flex flex-col flex-wrap px-8">
       {isAuth() && (
         <>
-          <h2 className="text-lg font-semibold text-gray-700 mt-4">
+          <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
             {currentPlaylist.name}
           </h2>
           <hr className="my-1 color-slate-300" />

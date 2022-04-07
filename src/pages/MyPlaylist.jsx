@@ -45,7 +45,7 @@ export function MyPlaylist() {
   return (
     <>
       <div className="flex flex-col flex-wrap px-8">
-        <h2 className="text-lg font-semibold text-gray-700 mt-4">
+        <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
           My Playlist{" "}
         </h2>
         <hr className="my-1 color-slate-300" />
@@ -85,7 +85,7 @@ export function MyPlaylist() {
             alt="home cinema"
             className="w-1/4"
           />
-          <p className="text-md p-2">
+          <p className="text-xs xs:text-base p-2">
             Login and start adding videos to playlist.
           </p>
         </div>

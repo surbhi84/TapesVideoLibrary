@@ -159,11 +159,11 @@ export function SingleVideo() {
             ></iframe>
 
             <div className="flex md:flex-row flex-col">
-              <p className="text-md md:text-lg font-semibold mt-2.5 ">
+              <p className="text-md md:text-lg font-semibold mt-2 ">
                 {singleVideo.title}
               </p>
               {/* INTERACTIVE BUTTONS */}
-              <div className="flex flex-row gap-3 md:gap-4 my-4 md:mt-2 m-auto md:ml-auto h-4 md:h-8 items-center">
+              <div className="flex flex-row gap-3 md:gap-4 my-4 md:mt-2 ml-auto h-4 md:h-8 items-center">
                 <IconContext.Provider
                   value={{
                     className: "text-md md:text-xl self-center text-gray-600",

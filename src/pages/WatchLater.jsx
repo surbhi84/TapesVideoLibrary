@@ -38,10 +38,12 @@ export function WatchLater() {
 
   return (
     <div className="flex flex-col flex-wrap px-8">
-      <h2 className="text-lg font-semibold text-gray-700 mt-4">Watch Later </h2>
+      <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
+        Watch Later{" "}
+      </h2>
       <hr className="my-1 color-slate-300" />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-2">
         {watchLater.length > 0 ? (
           <>
             {watchLater.map(
@@ -57,7 +59,7 @@ export function WatchLater() {
               }) => (
                 // VIDEOCARD
                 <div
-                  className="flex flex-row items-center shadow-lg hover:bg-gray-100 gap-10 p-3 "
+                  className="flex flex-row items-center shadow-lg hover:bg-gray-100 gap-10 p-3"
                   key={uuid()}
                   onClick={() => {
                     navigate(`/video/${id}`, {
@@ -130,7 +132,7 @@ export function WatchLater() {
               alt="hoem cinema"
               className="w-1/4"
             />
-            <p className="text-md p-2">
+            <p className="text-sm md:text-base p-2">
               Login and start adding videos to watch later
             </p>
           </div>

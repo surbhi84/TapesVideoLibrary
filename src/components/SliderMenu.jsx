@@ -69,16 +69,16 @@ export function SliderMenu() {
                       <>
                         <div>
                           <span
-                            className={`flex flex-row pl-6 pr-12 py-3 font-medium text-slate-800 text-md gap-7 items-center hover:bg-gray-200 ${
+                            className={`flex flex-row pl-4 pr-6 py-2 md:pl-6 md:pr-12 md:py-3 font-medium text-slate-800 gap-4 text-sm md:text-base md:gap-7 items-center hover:bg-gray-200 ${
                               isActive ? "bg-gray-200" : ""
                             }`}
                           >
-                            <img src={icon} alt={alt} />
+                            <img src={icon} alt={alt} className="h-4 md:h-6" />
                             <p> {label} </p>
                           </span>
                         </div>
                         {label === "History" || label === "Liked Videos" ? (
-                          <hr className="m-4 color-slate-300" />
+                          <hr className="m-2 md:m-4 color-slate-300" />
                         ) : (
                           ""
                         )}

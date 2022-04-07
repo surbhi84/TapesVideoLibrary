@@ -470,6 +470,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 .fixed{
   position: fixed;
 }
@@ -497,16 +501,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: auto;
 }
 
-.m-4{
-  margin: 1rem;
+.m-2{
+  margin: 0.5rem;
 }
 
 .m-1{
   margin: 0.25rem;
 }
 
-.m-2{
-  margin: 0.5rem;
+.m-4{
+  margin: 1rem;
 }
 
 .my-1{
@@ -563,10 +567,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: auto;
 }
 
-.mt-2\.5{
-  margin-top: 0.625rem;
-}
-
 .flex{
   display: flex;
 }
@@ -595,6 +595,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
+.h-4{
+  height: 1rem;
+}
+
 .h-10{
   height: 2.5rem;
 }
@@ -621,10 +625,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-4\/6{
   height: 66.666667%;
-}
-
-.h-4{
-  height: 1rem;
 }
 
 .w-full{
@@ -672,13 +672,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .-translate-x-full{
   --tw-translate-x: -100%;
-  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-105{
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
           transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -760,8 +753,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   gap: 0px;
 }
 
-.gap-7{
-  gap: 1.75rem;
+.gap-4{
+  gap: 1rem;
 }
 
 .gap-3{
@@ -918,9 +911,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.5rem;
 }
 
-.px-8{
-  padding-left: 2rem;
-  padding-right: 2rem;
+.px-3{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .py-1{
@@ -933,8 +926,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.5rem;
 }
 
-.pl-5{
-  padding-left: 1.25rem;
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.pl-3{
+  padding-left: 0.75rem;
 }
 
 .pl-1{
@@ -945,12 +943,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.25rem;
 }
 
-.pl-6{
-  padding-left: 1.5rem;
+.pl-4{
+  padding-left: 1rem;
 }
 
-.pr-12{
-  padding-right: 3rem;
+.pr-6{
+  padding-right: 1.5rem;
 }
 
 .text-center{
@@ -973,11 +971,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-xs{
@@ -1116,6 +1109,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 @media (min-width: 768px){
+  .md\:m-4{
+    margin: 1rem;
+  }
+
   .md\:mt-4{
     margin-top: 1rem;
   }
@@ -1124,16 +1121,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-top: 0.5rem;
   }
 
-  .md\:ml-auto{
-    margin-left: auto;
-  }
-
   .md\:h-8{
     height: 2rem;
   }
 
   .md\:h-10{
     height: 2.5rem;
+  }
+
+  .md\:h-7{
+    height: 1.75rem;
+  }
+
+  .md\:h-6{
+    height: 1.5rem;
   }
 
   .md\:h-screen{
@@ -1152,8 +1153,19 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 83.333333%;
   }
 
+  .md\:scale-105{
+    --tw-scale-x: 1.05;
+    --tw-scale-y: 1.05;
+    -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
   .md\:flex-row{
     flex-direction: row;
+  }
+
+  .md\:gap-7{
+    gap: 1.75rem;
   }
 
   .md\:gap-4{
@@ -1164,6 +1176,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding: 1.5rem;
   }
 
+  .md\:p-0\.5{
+    padding: 0.125rem;
+  }
+
+  .md\:p-0{
+    padding: 0px;
+  }
+
+  .md\:p-1{
+    padding: 0.25rem;
+  }
+
   .md\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
@@ -1172,6 +1196,38 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:px-4{
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .md\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:py-3{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .md\:pl-5{
+    padding-left: 1.25rem;
+  }
+
+  .md\:pl-6{
+    padding-left: 1.5rem;
+  }
+
+  .md\:pr-12{
+    padding-right: 3rem;
+  }
+
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .md\:text-lg{
@@ -1187,5 +1243,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 370px){
+  .xs\:visible{
+    visibility: visible;
+  }
+
+  .xs\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .xs\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }

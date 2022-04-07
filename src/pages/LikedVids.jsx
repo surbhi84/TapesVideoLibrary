@@ -13,10 +13,10 @@ export function LikedVids() {
 
   return (
     <div className="flex flex-col flex-wrap px-8">
-      <h2 className="text-lg font-semibold text-gray-700  mt-4">
+      <h2 className="text-sm xs:text-lg font-semibold text-gray-700 mt-4">
         Liked Videos{" "}
       </h2>
-      <hr className="my-1 color-slate-300" />
+      <hr className="my-1 color-slate-300 mb-2" />
       {likes.length > 0 ? (
         <>
           {likes.map(
@@ -74,7 +74,7 @@ export function LikedVids() {
             alt="hoem cinema"
             className="w-1/4"
           />
-          <p className="text-md p-2">Login and start liking.</p>
+          <p className="text-xs xs:text-base p-2">Login and start liking.</p>
         </div>
       )}
     </div>
