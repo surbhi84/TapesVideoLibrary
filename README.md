@@ -17,7 +17,7 @@
     <a href="https://github.com/surbhi84/TapesVideoLibrary"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="tapesvideolibrary.netlify.app" target='blank'>Open application</a>
+    <a href="https://tapesvideolibrary.netlify.app/" target="_blank">Open application</a>
     <br />
     <br />
   </p>
